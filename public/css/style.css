@@ -34,16 +34,16 @@ button.detail-bg:hover{
 .ml-6{
   margin-left: 7.7%;
 }
-.app-store-btn {
+a.app-store-btn {
   border-radius: 25px;
   padding: 0.6rem 1.5rem;
   font-weight: 500;
 }
-.app-store-btn:hover{
-  color: white !important;
+a.app-store-btn:hover{
+  color: red !important;
 }
 .app-store-btn.btn-light{
-  background-color: white;
+  background-color: white !important;
   transition: .2s;
 }
 .app-store-btn.btn-light:hover{
