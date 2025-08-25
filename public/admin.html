@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard — Neobankia</title>
+  
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+    body { font-family: Arial, sans-serif; padding: 24px; background: #f8f9fa; }
+    h1, h2 { color: #333; }
+    input, select {
+      display:block; margin:8px 0; padding:8px; width:320px; border:1px solid #ccc; border-radius:4px;
+    }
+    button {
+      padding:8px 12px; margin-top:8px; border:none; border-radius:4px;
+      background:#007bff; color:white; cursor:pointer;
+    }
+    button:hover { background:#0056b3; }
+    table {
+      width:100%; border-collapse: collapse; margin-top: 20px; background:white;
+    }
+    th, td {
+      border:1px solid #ddd; padding:8px; text-align:left;
+    }
+    th { background:#f1f1f1; }
+  </style>
+</head>
+<body>
+  <h1 class="fw-semibold">Neobankia Dashboard</h1>
+
+  <h3 class="detail">Create A User</h3>
+  <form id="createUserForm" class="">
+    <div class="row container px-auto gap-3">
+      <input id="fullName" class="col-md-5 col-12" name="fullName" placeholder="Full Name" required />
+      <input id="email" class="col-md-5 col-12" name="email" placeholder="Email" type="email" required />
+      <input id="username" class="col-md-5 col-12" name="username" placeholder="Username" required />
+      <input id="password" class="col-md-5 col-12" name="password" placeholder="Password" type="password" required />
+      <input id="accountNumber" class="col-md-5 col-12" name="accountNumber" placeholder="Account Number" required />
+      <input id="dob" class="col-md-5 col-12" name="dateOfBirth" placeholder="Date of Birth" type="date">
+      <input id="address" class="col-md-5 col-12" name="address" placeholder="Address" />
+      <input id="country" class="col-md-5 col-12" name="countryOfOrigin" placeholder="Country of Origin" />
+      <select id="gender" class="col-md-5 col-12" name="gender">
+        <option value="">Select Gender</option>
+        <option>Male</option><option>Female</option><option>Other</option>
+      </select>
+      <select id="maritalStatus" class="col-md-5 col-12" name="maritalStatus">
+        <option value="">Marital Status</option>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Divorced</option>
+        <option>Widowed</option>
+        <option>Other</option>
+      </select>
+      <input id="phone" class="col-md-5 col-12" name="phoneNumber" placeholder="Phone Number" />
+      <input id="profilePicture" class="col-md-5 bg-white" name="profilePicture" />
+      <input id="zipCode" class="col-md-5 col-12" name="zipCode" placeholder="Zip Code" />
+
+      <button type="submit" class="detail-bg col-lg-2">Create User</button>
+    </div>
+  </form>
+
+  <h3 class="mt-5">Existing Users</h3>
+  <button onclick="loadUsers()" class="detail-bg">Refresh Users</button>
+  <table id="usersTable" class="table">
+    <thead>
+      <tr class="table-dark">
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+<!-- FOOTER  -->
+<footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+    <div class="col-lg-3">
+      <h4 class="fw-bold text-uppercase">Neobankia</h4>
+      <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+      <div class="d-flex gap-3 mt-3">
+        <span class="text-white fs-5"><i class="bi bi-facebook"></i></span>
+        <span class="text-white fs-5"><i class="bi bi-linkedin"></i></span>
+        <span class="text-white fs-5"><i class="bi bi-instagram"></i></span>
+      </div>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="col-lg-2 col-md-6">
+      <h6 class="text-uppercase fw-semibold">Company</h6>
+      <ul class="list-unstyled mt-3">
+        <li><a href="./index.html" class="text-white-50 text-decoration-none d-block mb-2">Home</a></li>
+        <li><a href="./about.html" class="text-white-50 text-decoration-none d-block mb-2">About Us</a></li>
+        <li><a href="./features.html" class="text-white-50 text-decoration-none d-block mb-2">Features</a></li>
+        <li><a href="./reviews.html" class="text-white-50 text-decoration-none d-block mb-2">Our Reviews</a></li>
+        <li><a href="./contact.html" class="text-white-50 text-decoration-none d-block">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="col-lg-3 col-md-6">
+      <h6 class="text-uppercase fw-semibold">User Dashboard</h6>
+      <ul class="list-unstyled mt-3">
+        <li><a href="./user-dashboard.html" class="text-white-50 text-decoration-none d-block mb-2">Overview</a></li>
+        <li><a href="./statement.html" class="text-white-50 text-decoration-none d-block mb-2">Bank Statement</a></li>
+        <li><a href="./interbank-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Inter-BankTransfer</a></li>
+        <li><a href="./domestic-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Domestic Transfer</a></li>
+        <li><a href="./wire-transfer.html" class="text-white-50 text-decoration-none d-block">Wire Transfer</a></li>
+      </ul>
+    </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-2 py-4">
+      <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+<script>
+const API_BASE = 'http://localhost:4000/api/admin';
+
+// Load all users
+async function loadUsers(){
+  try {
+    const token = localStorage.getItem('token');
+    const res = await fetch(`${API_BASE}/users`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const json = await res.json();
+
+    const tbody = document.querySelector('#usersTable tbody');
+    tbody.innerHTML = '';
+    (json.users || []).forEach(u => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${u.fullName || ''}</td>
+        <td>${u.email}</td>
+        <td>${u.username || ''}</td>
+        <td>${u.password}</td>
+        <td>${u.isDisabled ? 'Disabled' : 'Active'}</td>
+        <td>
+          <button onclick="toggleUser('${u._id}', ${u.isDisabled})">${u.isDisabled ? 'Enable' : 'Disable'}</button>
+          <button onclick="deleteUser('${u._id}')">Delete</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } catch (err) {
+    alert('Error loading users');
+    console.error(err);
+  }
+}
+
+// Toggle enable/disable
+async function toggleUser(id, currentlyDisabled){
+  try {
+    const token = localStorage.getItem('token');
+    const endpoint = `${API_BASE}/${currentlyDisabled ? 'enable' : 'disable'}/${id}`;
+    const res = await fetch(endpoint, { method: 'PUT', headers: { 'Authorization': `Bearer ${token}` }});
+    if (res.ok) loadUsers();
+    else alert('Failed to update user.');
+  } catch (err) {
+    console.error(err);
+    alert('Error updating user');
+  }
+}
+
+// Delete user
+async function deleteUser(id){
+  if (!confirm('Delete this user?')) return;
+  try {
+    const token = localStorage.getItem('token');
+    const res = await fetch(`${API_BASE}/delete/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` }});
+    if (res.ok) loadUsers();
+    else alert('Failed to delete user.');
+  } catch (err) {
+    console.error(err);
+    alert('Error deleting user');
+  }
+}
+
+// Handle create user form
+document.getElementById('createUserForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try {
+    const token = localStorage.getItem('token');
+    const formData = {
+      fullName: document.getElementById('fullName').value,
+      email: document.getElementById('email').value,
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value,
+      accountNumber: document.getElementById('accountNumber').value,
+      dateOfBirth: document.getElementById('dob').value,
+      address: document.getElementById('address').value,
+      countryOfOrigin: document.getElementById('country').value,
+      gender: document.getElementById('gender').value,
+      maritalStatus: document.getElementById('maritalStatus').value,
+      phoneNumber: document.getElementById('phone').value,
+      profilePicture: document.getElementById('profilePicture').value,
+      zipCode: document.getElementById('zipCode').value
+    };
+
+    const res = await fetch(`${API_BASE}/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to create user');
+
+    alert('User created successfully!');
+    e.target.reset();
+    loadUsers();
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+});
+
+// Initial load
+loadUsers();
+</script>
+</body>
+</html>

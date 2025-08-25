@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- FontAwesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    body{
+    font-family: 'Inter', sans-serif;
+    }
+    .arrow1{
+      rotate: 245deg;
+      top: -30px;
+      right: 120px;
+    }
+    .arrow2{
+      rotate: 310deg;
+      bottom: -50px;
+      right: 20px;
+    }
+    .arrow3{
+      rotate: 310deg;
+    }
+  #sidebar .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Tooltip styling */
+  #sidebar .nav-link::after {
+    content: attr(data-tooltip); /* take tooltip text from attribute */
+    position: absolute;
+    left: 60px; /* adjust distance from icon */
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, left 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Show tooltip on hover */
+  #sidebar .nav-link:hover::after {
+    opacity: 1;
+    left: 50px; /* moves closer on hover for nice effect */
+  }
+  .nav-link:hover{
+    color: white !important;
+  }
+  </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-dark text-white py-4 sidebar" id="sidebar">
+    <div class="text-center mb-4 mt-1 pe-2">
+      <img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="" class="img-fluid">
+    </div>
+    <nav class="nav flex-column ps-3">
+      <!-- Sidebar Links -->
+      <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4" data-tooltip="Home">
+        <i class="fas fa-home"></i>
+      </a>
+      <a href="./user-dashboard.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Dashboard">
+        <i class="fas fa-circle-user"></i>
+      </a>
+      <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Statement">
+        <i class="fas fa-chart-line"></i>
+      </a>
+      <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Transfer History">
+        <i class="fas fa-clipboard-check"></i>
+      </a>
+      <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Domestic Transfer">
+        <i class="fas fa-exchange-alt"></i>
+      </a>
+      <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Interbank Transfer">
+        <i class="fas fa-money-bill-transfer"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Wire Transfer">
+        <i class="fas fa-hand-holding-dollar"></i>
+      </a>
+      <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Logout">
+        <i class="fas fa-door-open"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+      </a>
+    </nav>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="col-11 ml-6">
+
+     <!-- Navbar -->
+     <nav class="navbar bg-white shadow-sm p-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- Left: Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="#"><img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="logo"/> Neobankia<span style="color: #4635C4">.</span></a>
+
+        <!-- Center: Navigation Links -->
+        <div class="d-flex justify-content-end align-items-center d-none d-lg-block">
+          <span class="me-3 fw-bold" id="name1">User</span>
+          <img src="" class="rounded-circle" width="40" height="40" alt="Profile" id="profilePic2">
+        </div>
+
+        <!-- Toggle for Mobile -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="collapse navbar-collapse d-lg-none bg-dark px-4" id="mobileMenu">
+        <ul class="navbar-nav">
+          <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4">
+            <i class="fas fa-home me-2"></i> <span>Go To Home</span>
+          </a>
+          <a href="./user-dashboard.html" class="nav-link text-white fs-5 mb-2">
+            <i class="fas fa-circle-user me-2"></i> <span>Dashboard Overview</span>
+          </a>
+          <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-chart-line me-2"></i> <span>Bank Statement</span>
+          </a>
+          <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-clipboard-check me-2"></i> <span>Transfer History</span>
+          </a>
+          <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-exchange-alt me-2"></i> <span>Domestic Transfer</span>
+          </a>
+          <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-money-bill-transfer me-2"></i> <span>Interbank Transfer</span>
+          </a>
+          <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-hand-holding-dollar me-2"></i> <span>Wire Transfer</span>
+          </a>
+          <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-door-open me-2"></i> <span>Logout</span>
+          </a>
+        </ul>
+      </div>
+    </nav>
+    
+
+    <!-- Welcome Banner -->
+    <div class="banner my-3 rounded container-fluid">
+      <div class="d-flex justify-content-between p-4 detail-bg2 position-relative overflow-hidden">
+        <div class="col-12 col-lg-8">
+          <h3>Welcome, <span id="name2" class="detail">User</span> </h3>
+          <p class="text-muted">Tips: Do not share your login details with anyone, for security purposes</p>
+        </div>
+        <div class="col-lg-3">
+          <img src="./images/arrow-purple.svg" alt="" class="img-fluid col-1 mb-3 position-absolute arrow1">
+          <img src="./images/arrow-purple.svg" alt="" class="img-fluid col-1 mb-3 position-absolute arrow2">
+          <img src="./images/arrow-purple.svg" alt="" class="img-fluid col-1 mb-3 position-absolute arrow3">
+        </div>
+
+      </div>
+      <div class="d-flex align-items-center gap-3 mt-3 p-4 bg-white"> 
+        <div class="d-flex">
+          <img id="profilePic" class="rounded-circle" width="70" height="70" alt="Profile"> 
+        </div>
+        <div><p class="mb-1">Hey <strong id="name3">User</strong>, your account is </p>
+          <h3 class="text-success -bold">ACTIVE</h3></div>
+      </div>
+    </div>
+
+    <div class="border d-flex align-items-center container-fluid mb-5 mx-auto detail-bg2">
+      <i class="fa fa-circle-info p-3 detail"></i>
+      <marquee behavior="100" direction="left" class="detail">Notice: We are committed to providing a secured and convenient banking experience to all our customers through excellent services powered by state of the art technologies, however, if you notice anything SUSPICIOUS with your online banking portal, kindly contact your account manager for immediate action | Thank you for banking with us!</marquee>
+    </div>
+
+    <!-- Cards Section -->
+   
+    <div class="container-fluid">
+      <div class="row g-4">
+        <!-- Available Balance -->
+        <div class="col-md-4">
+          <div class="border card-custom">
+            <img src="./images/arrow-purple.svg" alt="" class="img-fluid mb-3">
+            <h5>Available Balance</h5>
+            <div class="sub-text fw-semibold">ACCOUNT NUMBER: 6037011580</div>
+            <div class="balance-amount mb-4">USD $669,013.00</div>
+            <canvas id="availableChart" class="mt-5" height="130"></canvas>
+          </div>
+        </div>
+  
+        <!-- Total Book Balance -->
+        <div class="col-md-4">
+          <div class="border card-custom">
+            <img src="./images/arrow-blue.svg" alt="" class="img-fluid mb-3">
+            <h5>Total Book Balance</h5>
+            <div class="sub-text fw-semibold">AS AT AUGUST 16, 2025</div>
+            <div class="balance-amount">USD $269,013.00</div>
+            <canvas id="bookChart" height="130" class="mt-5"></canvas>
+          </div>
+        </div>
+  
+        <!-- Virtual Card -->
+        <div class="col-md-4">
+            <div class="virtual-card p-4">
+              <img src="./images/card.png" alt="" class="w-100 mb-2">
+              <div class="details mt-4 pt-1">
+                <p>Payment Limits <span class="float-end">USD $1,500.00</span></p>
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-success" style="width: 80%"></div>
+                </div>
+                <p>ATM Limits <span class="float-end">USD $1,000.00</span></p>
+                <div class="progress">
+                  <div class="progress-bar bg-info" style="width: 65%"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid my-5">
+  <div class="row g-4">
+    
+    <!-- Logged In From -->
+    <div class="col-md-6">
+      <div class="card">
+        <h6 class="mb-2 pt-4 px-3">Logged In From</h6>
+        <hr style="background-color: lightgray;">
+        <div class="d-flex align-items-center px-3">
+          <p class="text-danger fs-5 me-2">●</p>
+          <h3 class="ip-text" id="ipText">Your IP Address: --</h3>
+        </div>
+        <div class="px-3 pb-3">
+          
+        <!-- Chart -->
+        <canvas id="ipChart" height="40" class="mt-2"></canvas>
+        <div class="text-end mt-2">
+          <a href="#" class="text-primary fs-6 text-decoration-none">Real-Time Report →</a>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transfers -->
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h6 class="mb-3">Recent Transfers</h6>
+        <div class="row fw-bold text-muted mb-2 mt-2">
+          <div class="col fs-7">BENEFICIARY BANK/ACCOUNT</div>
+          <div class="col fs-6">AMOUNT</div>
+          <div class="col fs-6">STATUS</div>
+          <div class="col fs-6">DATE/TIME</div>
+        </div>
+        <div class="row my-4 py-1">
+          <div class="col"><span class="text-primary fs-4">◉</span></div>
+          <div class="col text-success">USD $</div>
+          <div class="col">-</div>
+          <div class="col">-</div>
+        </div>
+        <div class="text-end mt-2">
+          <a href="#" class="text-primary fs-6 text-decoration-none">View More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Financial Statement -->
+<div class="card p-3 mt-5">
+  <h6 class="mb-3">Your Financial Statement</h6>
+
+  <!-- Responsive scrollable table -->
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead class="text-muted fw-bold">
+        <tr>
+          <th>TRANSACTION TYPE</th>
+          <th>AMOUNT</th>
+          <th>DESCRIPTION</th>
+          <th>DESCRIPTION</th>
+          <th>DATE/TIME</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="text-success fs-5">✔</span> Debit</td>
+          <td class="text-success">USD $ 860500</td>
+          <td><i class="bi bi-person"></i> Wire transfer</td>
+          <td>Contract advance payment</td>
+          <td>15/02/2025 08:30 am</td>
+          <td class="text-success fw-bold">Successful</td>
+        </tr>
+        <tr>
+          <td><span class="text-success fs-5">✔</span> Debit</td>
+          <td class="text-success">USD $ 14610</td>
+          <td><i class="bi bi-person"></i> Bill pay</td>
+          <td>IRS fp Anual</td>
+          <td>12/02/2025 13:55 pm</td>
+          <td class="text-success fw-bold">Successful</td>
+        </tr>
+        <tr>
+          <td><span class="text-success fs-5">✔</span> Debit</td>
+          <td class="text-success">USD $ 2200</td>
+          <td><i class="bi bi-person"></i> Buchanan Field Airport</td>
+          <td>Flight ticket</td>
+          <td>09/02/2025 11:11 am</td>
+          <td class="text-success fw-bold">Successful</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+  </div>
+</div>
+
+<footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+      <div class="col-lg-3">
+        <h4 class="fw-bold text-uppercase">Neobankia</h4>
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <span class="text-white fs-5"><i class="bi bi-facebook"></i></span>
+          <span class="text-white fs-5"><i class="bi bi-linkedin"></i></span>
+          <span class="text-white fs-5"><i class="bi bi-instagram"></i></span>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="./index.html" class="text-white-50 text-decoration-none d-block mb-2">Home</a></li>
+          <li><a href="./about.html" class="text-white-50 text-decoration-none d-block mb-2">About Us</a></li>
+          <li><a href="./features.html" class="text-white-50 text-decoration-none d-block mb-2">Features</a></li>
+          <li><a href="./reviews.html" class="text-white-50 text-decoration-none d-block mb-2">Our Reviews</a></li>
+          <li><a href="./contact.html" class="text-white-50 text-decoration-none d-block">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">User Dashboard</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="./user-dashboard.html" class="text-white-50 text-decoration-none d-block mb-2">Overview</a></li>
+          <li><a href="./statement.html" class="text-white-50 text-decoration-none d-block mb-2">Bank Statement</a></li>
+          <li><a href="./interbank-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Inter-BankTransfer</a></li>
+          <li><a href="./domestic-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Domestic Transfer</a></li>
+          <li><a href="./wire-transfer.html" class="text-white-50 text-decoration-none d-block">Wire Transfer</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-2 py-4">
+      <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+
+<script>
+  function logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/user-login.html';
+  }
+  
+  // ✅ Redirect if not logged in
+  // if (!localStorage.getItem('token')) {
+  //   window.location.href = '/user-login.html';
+  // }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/user-login.html';
+    return;
+  }
+
+  fetch('/api/user/profile', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(res => {
+    if (res.status === 401) {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+      return;
+    }
+    return res.json();
+  })
+  .then(user => {
+    if (user) {
+      document.getElementById('name1').textContent = `${user.fullName}`;
+      document.getElementById('name2').textContent = `${user.fullName}`;
+      document.getElementById('name3').textContent = `${user.fullName}`;
+      document.querySelector('.banner p').textContent = `Tips: Change your Internet banking password frequently to keep your account safe`;
+      // document.querySelector('.banner img').src = user.profilePicture || '';
+      document.getElementById('profilePic').src = user.profilePicture; 
+      document.getElementById('profilePic2').src = user.profilePicture; 
+    }
+  })
+  .catch(err => console.error(err));
+});
+
+  </script>
+
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+     // Chart options (slightly bigger, no grid, sharp vertices)
+  const chartOptions = {
+    responsive: true,
+    plugins: { legend: { display: true } }, // now show legend since we have 2 lines
+    scales: { x: { display: false }, y: { display: false } },
+    elements: {
+      line: { tension: 0 }, // sharp corners (no curves)
+      point: { radius: 0 }  // visible vertices
+    }
+  };
+
+  // Available Chart with 2 datasets
+  new Chart(document.getElementById('availableChart'), {
+    type: 'line',
+    data: {
+      labels: Array(11).fill(""),
+      datasets: [
+        {
+          label: "Received",
+          data: [50,40,60,120,70,100,60,90,110,70,95],
+          borderColor: '#4635C4',
+          backgroundColor: 'rgba(106,17,203,0.1)',
+          fill: true
+        },
+        {
+          label: "Sent",
+          data: [30,20,50,40,60,50,70,60,50,85,30],
+          borderColor: 'gray',
+          backgroundColor: 'rgba(10,10,10,0.1)',
+          fill: true
+        }
+      ]
+    },
+    options: chartOptions
+  });
+
+  // Booked Chart with 2 datasets
+  new Chart(document.getElementById('bookChart'), {
+    type: 'line',
+    data: {
+      labels: Array(10).fill(""),
+      datasets: [
+        {
+          label: "Received",
+          data: [20,30,50,20,40,80,30,70,50,90],
+          borderColor: '#2575fc',
+          backgroundColor: 'rgba(37,117,252,0.1)',
+          fill: true
+        },
+        {
+          label: "Sent",
+          data: [10,40,20,50,30,20,40,60,30,80],
+          borderColor: 'gray',
+          backgroundColor: 'rgba(10,10,10,0.1)',
+          fill: true
+        }
+      ]
+    },
+    options: chartOptions
+  });
+
+  const ctx = document.getElementById('ipChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: Array(12).fill(""),
+    datasets: [{
+      data: [90,80,85,75,70,72,68,65,70,75,82,88],
+      borderColor: '#4e73df',
+      backgroundColor: 'rgba(78,115,223,0.1)',
+      fill: true,
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }},
+    scales: { x: { display: false }, y: { display: false }}
+  }
+});
+  </script>
+    <script>
+      // Display IP (best-effort)
+      (async () => {
+        try {
+          const r = await fetch('https://api.ipify.org?format=json');
+          const { ip } = await r.json();
+          document.getElementById('ipText').textContent = `IP Address: ${ip}`;
+        } catch {
+          document.getElementById('ipText').textContent = 'IP Address: --';
+        }
+      })();
+      </script>
+</body>
+</html>

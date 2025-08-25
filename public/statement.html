@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank Statement</title>
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- FontAwesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    body{
+    font-family: 'Inter', sans-serif;
+    }
+    .arrow1{
+      rotate: 245deg;
+      top: -30px;
+      right: 120px;
+    }
+    .arrow2{
+      rotate: 310deg;
+      bottom: -50px;
+      right: 20px;
+    }
+    .arrow3{
+      rotate: 310deg;
+    }
+    .print-btn{
+      border-radius: 30px;
+      padding: 10px 20px;
+    }
+    @media screen and (max-width: 414px){
+      .print{
+        display: block !important;
+      }
+      th{
+          font-size: 13px;
+          font-weight: 500;
+      }
+    }#sidebar .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Tooltip styling */
+  #sidebar .nav-link::after {
+    content: attr(data-tooltip); /* take tooltip text from attribute */
+    position: absolute;
+    left: 60px; /* adjust distance from icon */
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, left 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Show tooltip on hover */
+  #sidebar .nav-link:hover::after {
+    opacity: 1;
+    left: 50px; /* moves closer on hover for nice effect */
+  }
+  .nav-link:hover{
+    color: white !important;
+  }
+  </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-dark text-white py-4 sidebar" id="sidebar">
+    <div class="text-center mb-4 mt-1 pe-2">
+      <img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="" class="img-fluid">
+    </div>
+    <nav class="nav flex-column ps-3">
+      <!-- Sidebar Links -->
+      <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4" data-tooltip="Home">
+        <i class="fas fa-home"></i>
+      </a>
+      <a href="./user-dashboard.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Dashboard">
+        <i class="fas fa-circle-user"></i>
+      </a>
+      <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Statement">
+        <i class="fas fa-chart-line"></i>
+      </a>
+      <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Transfer History">
+        <i class="fas fa-clipboard-check"></i>
+      </a>
+      <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Domestic Transfer">
+        <i class="fas fa-exchange-alt"></i>
+      </a>
+      <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Interbank Transfer">
+        <i class="fas fa-money-bill-transfer"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Wire Transfer">
+        <i class="fas fa-hand-holding-dollar"></i>
+      </a>
+      <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Logout">
+        <i class="fas fa-door-open"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+      </a>
+    </nav>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="col-11 ml-6">
+
+     <!-- Navbar -->
+     <nav class="navbar bg-white shadow-sm p-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- Left: Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="#"><img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="logo"/> Neobankia<span style="color: #4635C4">.</span></a>
+
+        <!-- Center: Navigation Links -->
+        <div class="d-flex justify-content-end align-items-center d-none d-lg-block">
+          <span class="me-3 fw-bold" id="name1">User</span>
+          <img src="" class="rounded-circle" width="40" height="40" alt="Profile" id="profilePic2">
+        </div>
+
+        <!-- Toggle for Mobile -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="collapse navbar-collapse d-lg-none bg-dark px-4" id="mobileMenu">
+        <ul class="navbar-nav">
+          <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4">
+            <i class="fas fa-home me-2"></i> <span>Go To Home</span>
+          </a>
+          <a href="./user-dashboard.html" class="nav-link text-white fs-5 mb-2">
+            <i class="fas fa-circle-user me-2"></i> <span>Dashboard Overview</span>
+          </a>
+          <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-chart-line me-2"></i> <span>Bank Statement</span>
+          </a>
+          <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-clipboard-check me-2"></i> <span>Transfer History</span>
+          </a>
+          <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-exchange-alt me-2"></i> <span>Domestic Transfer</span>
+          </a>
+          <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-money-bill-transfer me-2"></i> <span>Interbank Transfer</span>
+          </a>
+          <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-hand-holding-dollar me-2"></i> <span>Wire Transfer</span>
+          </a>
+          <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-door-open me-2"></i> <span>Logout</span>
+          </a>
+        </ul>
+      </div>
+    </nav>
+    
+
+    <div class="p-3 mt-4">
+        <!-- Header Row -->
+        <div class="d-flex justify-content-between align-items-center mb-3 print">
+          <h4 class="mb-2">Account Statement</h4>
+          <button class="btn detail-bg text-white print-btn" onclick="printTable()">Print Statement</button>
+        </div>
+      
+        <!-- Caption -->
+        <p class="text-muted mb-5">Here is your Credit and Debit Transaction Statement</p>
+      
+        <!-- Scrollable Table -->
+        <div class="table-responsive">
+          <table class="table align-middle shadow-sm border" id="transactionTable">
+            <thead class="text-muted fw-bold">
+              <tr class="table-dark">
+                <th>TRANSACTION ID</th>
+                <th>TRANSACTION TYPE</th>
+                <th>AMOUNT</th>
+                <th>BENEFICIARY/SENDER</th>
+                <th>DESCRIPTION</th>
+                <th>DATE/TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-primary">#318</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 470</span></td>
+                <td>AT&amp;T</td>
+                <td>Phone bill</td>
+                <td>28/08/2025 07:30 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#317</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 1600</span></td>
+                <td>Buchanan Field Airport</td>
+                <td>Flight ticket</td>
+                <td>28/08/2025 12:12 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#316</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 15000</span></td>
+                <td>IRS</td>
+                <td>Tax refund</td>
+                <td>27/08/2025 16:44 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#315</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 2000</span></td>
+                <td>ATM machine</td>
+                <td>ATM withdrawal</td>
+                <td>27/08/2025 11:10 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#314</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 4000</span></td>
+                <td>Interbank Transaction</td>
+                <td>Bank transfer</td>
+                <td>27/08/2025 07:00 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#313</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 2100</span></td>
+                <td>Bill pay</td>
+                <td>Electricity and phone bill</td>
+                <td>25/08/2025 13:25 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#312</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 630</span></td>
+                <td>Bill pay</td>
+                <td>DIR PPD ID: 9680445002</td>
+                <td>25/08/2025 09:39 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#311</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 3,200</span></td>
+                <td>Amazon</td>
+                <td>Freelance Payment</td>
+                <td>25/08/2025 09:15 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#310</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 470</span></td>
+                <td>AT&amp;T</td>
+                <td>Phone Bill</td>
+                <td>24/08/2025 07:30 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#309</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 5,000</span></td>
+                <td>PayPal</td>
+                <td>Client Transfer</td>
+                <td>20/08/2025 06:00 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#308</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 120</span></td>
+                <td>Netflix</td>
+                <td>Subscription</td>
+                <td>13/08/2025 08:30 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#307</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 2,450</span></td>
+                <td>Upwork</td>
+                <td>Project Payment</td>
+                <td>13/08/2025 03:40 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#306</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 600</span></td>
+                <td>Apple</td>
+                <td>App Store Purchase</td>
+                <td>12/08/2025 10:25 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#305</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 7,800</span></td>
+                <td>Stripe</td>
+                <td>E-commerce Payout</td>
+                <td>08/08/2025 09:50 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#304</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 350</span></td>
+                <td>Spotify</td>
+                <td>Music Subscription</td>
+                <td>04/08/2025 11:45 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#303</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,500</span></td>
+                <td>Google</td>
+                <td>Ad Revenue</td>
+                <td>02/08/2025 09:00 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#302</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 200</span></td>
+                <td>Uber</td>
+                <td>Transport</td>
+                <td>28/07/2025 08:15 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#301</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 900</span></td>
+                <td>Stripe</td>
+                <td>Client payment</td>
+                <td>26/07/2025 06:40 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#300</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 500</span></td>
+                <td>Google</td>
+                <td>Ad revenue</td>
+                <td>14/07/2025 11:20 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#299</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 320</span></td>
+                <td>Netflix</td>
+                <td>Subscription</td>
+                <td>10/07/2025 08:30 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#298</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,500</span></td>
+                <td>Upwork</td>
+                <td>Contract payout</td>
+                <td>08/07/2025 04:45 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#297</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 2,300</span></td>
+                <td>Binance</td>
+                <td>Crypto withdrawal</td>
+                <td>08/07/2025 01:25 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#296</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 120</span></td>
+                <td>Apple</td>
+                <td>iCloud storage</td>
+                <td>29/06/2025 09:55 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#295</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 700</span></td>
+                <td>Fiverr</td>
+                <td>Service earnings</td>
+                <td>25/06/2025 10:05 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#294</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,050</span></td>
+                <td>Remitly</td>
+                <td>Family remittance</td>
+                <td>21/06/2025 05:15 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#293</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,250</span></td>
+                <td>PayPal</td>
+                <td>Freelance payment</td>
+                <td>20/06/2025 09:12 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#292</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 300</span></td>
+                <td>Amazon</td>
+                <td>Electronics purchase</td>
+                <td>18/06/2025 02:44 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#291</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 980</span></td>
+                <td>Stripe</td>
+                <td>Project income</td>
+                <td>15/06/2025 10:21 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#290</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 120</span></td>
+                <td>Netflix</td>
+                <td>Subscription</td>
+                <td>14/06/2025 07:18 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#289</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 2,100</span></td>
+                <td>Upwork</td>
+                <td>Milestone payment</td>
+                <td>11/06/2025 11:05 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#288</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,250</span></td>
+                <td>Stripe</td>
+                <td>Freelance payment</td>
+                <td>10/06/2025 04:40 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#287</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 120</span></td>
+                <td>Uber</td>
+                <td>Transport</td>
+                <td>05/06/2025 07:15 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#286</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 900</span></td>
+                <td>Payoneer</td>
+                <td>Client payment</td>
+                <td>30/05/2025 01:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#285</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 60</span></td>
+                <td>Spotify</td>
+                <td>Music subscription</td>
+                <td>29/05/2025 09:20 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#284</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 2,000</span></td>
+                <td>Remitly</td>
+                <td>Family transfer</td>
+                <td>27/05/2025 03:10 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#283</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 95</span></td>
+                <td>Amazon</td>
+                <td>Books purchase</td>
+                <td>26/05/2025 08:30 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#282</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 650</span></td>
+                <td>Fiverr</td>
+                <td>Freelance gig</td>
+                <td>26/05/2025 10:25 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#281</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 300</span></td>
+                <td>Netflix</td>
+                <td>Subscription annual</td>
+                <td>25/05/2025 07:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#280</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,800</span></td>
+                <td>Wise</td>
+                <td>Work payout</td>
+                <td>14/05/2025 11:40 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#279</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 45</span></td>
+                <td>Zoom</td>
+                <td>Subscription</td>
+                <td>13/05/2025 06:55 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#278</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 720</span></td>
+                <td>Upwork</td>
+                <td>Client project</td>
+                <td>12/05/2025 01:35 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#277</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 160</span></td>
+                <td>KFC</td>
+                <td>Family dinner</td>
+                <td>11/05/2025 08:45 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#276</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,050</span></td>
+                <td>Paypal</td>
+                <td>Client invoice</td>
+                <td>10/05/2025 02:20 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#275</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 75</span></td>
+                <td>Apple</td>
+                <td>App Store</td>
+                <td>03/05/2025 09:10 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#274</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 980</span></td>
+                <td>Google</td>
+                <td>Service payment</td>
+                <td>01/05/2025 05:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#273</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 50</span></td>
+                <td>AT&T</td>
+                <td>Phone bill</td>
+                <td>27/04/2025 07:20 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#272</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,200</span></td>
+                <td>Western Union</td>
+                <td>Money transfer</td>
+                <td>26/04/2025 12:15 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#271</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 200</span></td>
+                <td>Shell</td>
+                <td>Fuel purchase</td>
+                <td>25/04/2025 08:40 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#270</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,600</span></td>
+                <td>Remitly</td>
+                <td>Business payout</td>
+                <td>22/04/2025 04:55 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#269</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 15,700</span></td>
+                <td>Stripe</td>
+                <td>Freelance payment</td>
+                <td>22/04/2025 04:40 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#268</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,250</span></td>
+                <td>Stripe</td>
+                <td>Freelance payment</td>
+                <td>22/04/2025 01:52 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#267</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 120</span></td>
+                <td>Uber</td>
+                <td>Transport</td>
+                <td>21/04/2025 07:15 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#266</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 900</span></td>
+                <td>Payoneer</td>
+                <td>Client payment</td>
+                <td>16/04/2025 01:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#265</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 60</span></td>
+                <td>Spotify</td>
+                <td>Music subscription</td>
+                <td>13/04/2025 09:20 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#264</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 2,000</span></td>
+                <td>Remitly</td>
+                <td>Family transfer</td>
+                <td>10/04/2025 03:10 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#263</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 95</span></td>
+                <td>Amazon</td>
+                <td>Books purchase</td>
+                <td>10/04/2025 08:30 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#262</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 650</span></td>
+                <td>Fiverr</td>
+                <td>Freelance gig</td>
+                <td>04/04/2025 10:25 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#261</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 300</span></td>
+                <td>Netflix</td>
+                <td>Subscription annual</td>
+                <td>02/04/2025 07:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#260</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,800</span></td>
+                <td>Wise</td>
+                <td>Work payout</td>
+                <td>27/03/2025 11:40 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#259</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 45</span></td>
+                <td>Zoom</td>
+                <td>Subscription</td>
+                <td>24/03/2025 06:55 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#258</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 720</span></td>
+                <td>Upwork</td>
+                <td>Client project</td>
+                <td>22/03/2025 01:35 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#257</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 160</span></td>
+                <td>KFC</td>
+                <td>Family dinner</td>
+                <td>21/03/2025 08:45 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#256</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,050</span></td>
+                <td>Paypal</td>
+                <td>Client invoice</td>
+                <td>14/03/2025 02:20 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#255</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 75</span></td>
+                <td>Apple</td>
+                <td>App Store</td>
+                <td>09/03/2025 09:10 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#254</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 980</span></td>
+                <td>Google</td>
+                <td>Service payment</td>
+                <td>08/03/2025 05:00 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#253</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 50</span></td>
+                <td>MTN</td>
+                <td>Data recharge</td>
+                <td>07/03/2025 07:20 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#252</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,200</span></td>
+                <td>Western Union</td>
+                <td>Money transfer</td>
+                <td>03/03/2025 12:15 pm</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#251</td>
+                <td>Debit</td>
+                <td><span class="badge bg-light text-danger">USD $ 200</span></td>
+                <td>Shell</td>
+                <td>Fuel purchase</td>
+                <td>01/03/2025 08:40 am</td>
+              </tr>
+              <tr>
+                <td class="text-primary">#250</td>
+                <td>Credit</td>
+                <td><span class="badge bg-light text-success">USD $ 1,600</span></td>
+                <td>Remitly</td>
+                <td>Business payout</td>
+                <td>01/03/2025 07:55 pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <!-- FOOTER  -->
+  <footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+    <div class="container">
+      <div class="row gy-4 justify-content-between py-5">
+  
+        <!-- Company Branding -->
+      <div class="col-lg-3">
+        <h4 class="fw-bold text-uppercase">Neobankia</h4>
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <span class="text-white fs-5"><i class="bi bi-facebook"></i></span>
+          <span class="text-white fs-5"><i class="bi bi-linkedin"></i></span>
+          <span class="text-white fs-5"><i class="bi bi-instagram"></i></span>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="./index.html" class="text-white-50 text-decoration-none d-block mb-2">Home</a></li>
+          <li><a href="./about.html" class="text-white-50 text-decoration-none d-block mb-2">About Us</a></li>
+          <li><a href="./features.html" class="text-white-50 text-decoration-none d-block mb-2">Features</a></li>
+          <li><a href="./reviews.html" class="text-white-50 text-decoration-none d-block mb-2">Our Reviews</a></li>
+          <li><a href="./contact.html" class="text-white-50 text-decoration-none d-block">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">User Dashboard</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="./user-dashboard.html" class="text-white-50 text-decoration-none d-block mb-2">Overview</a></li>
+          <li><a href="./statement.html" class="text-white-50 text-decoration-none d-block mb-2">Bank Statement</a></li>
+          <li><a href="./interbank-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Inter-BankTransfer</a></li>
+          <li><a href="./domestic-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Domestic Transfer</a></li>
+          <li><a href="./wire-transfer.html" class="text-white-50 text-decoration-none d-block">Wire Transfer</a></li>
+        </ul>
+      </div>
+  
+        <!-- Contact Info -->
+        <div class="col-lg-3">
+          <h6 class="text-uppercase fw-semibold">Contact</h6>
+          <ul class="list-unstyled mt-3 text-white-50">
+            <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+            <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
+            <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <!-- Bottom Bar -->
+      <div class="text-center border-top border-secondary mt-2 py-4">
+        <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+    </div>
+    
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/user-login.html';
+            return;
+        }
+
+        fetch('/api/user/profile', {
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            if (res.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/login.html';
+            return;
+            }
+            return res.json();
+        })
+        .then(user => {
+            if (user) {
+            document.getElementById('name1').textContent = `${user.fullName}`;
+            document.getElementById('name2').textContent = `${user.fullName}`;
+            document.getElementById('name3').textContent = `${user.fullName}`;
+            document.querySelector('.banner p').textContent = `Tips: Change your Internet banking password frequently to keep your account safe`;
+            document.querySelector('.banner img').src = user.profilePicture || '';
+            }
+        })
+        .catch(err => console.error(err));
+    });
+
+    function printTable() {
+  var divToPrint = document.getElementById("transactionTable");
+  var newWin = window.open("");
+  newWin.document.write("<html><head><title>Print Statement</title>");
+  newWin.document.write("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'>");
+  newWin.document.write("</head><body>");
+  newWin.document.write(divToPrint.outerHTML);
+  newWin.document.write("</body></html>");
+  newWin.document.close();
+  newWin.print();
+}
+</script>
+<script>
+  // Example: Fetch user data from DB/API
+  fetch('/api/user/profile')
+    .then(res => res.json())
+    .then(user => {
+      document.getElementById('name1').innerText = user.name;
+      document.getElementById('profilePic').src = user.profilePicture; 
+    });
+</script>
+</body>

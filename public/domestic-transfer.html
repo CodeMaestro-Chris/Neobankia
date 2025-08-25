@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Domestic Transfer — Neobankia</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+   <!-- Bootstrap -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+   <!-- FontAwesome Icons -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+   
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+   
+   <!-- Custom CSS -->
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+   <link rel="stylesheet" href="css/style.css" />
+ 
+
+  <style>
+    body{
+        font-family: 'Inter', sans-serif;
+    }
+    .page-title { 
+        font-weight:700;
+        letter-spacing:.2px; 
+    }
+    .card-surface { background:#fff; border:1px solid #e7eaf0; border-radius:12px; }
+    .section-note { font-size:.95rem; color:#5f6b7a; }
+    .form-label .req { color:#4431d4; }
+    .btn-pill { border-radius:10px; }
+    .shadow-soft { box-shadow: 0 8px 18px rgba(18,38,63,.05); }
+    @media (max-width: 576px){
+      .btn-submit { width:100%; }
+    }#sidebar .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Tooltip styling */
+  #sidebar .nav-link::after {
+    content: attr(data-tooltip); /* take tooltip text from attribute */
+    position: absolute;
+    left: 60px; /* adjust distance from icon */
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, left 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Show tooltip on hover */
+  #sidebar .nav-link:hover::after {
+    opacity: 1;
+    left: 50px; /* moves closer on hover for nice effect */
+  }
+  .nav-link:hover{
+    color: white !important;
+  }
+  </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-dark text-white py-4 sidebar" id="sidebar">
+    <div class="text-center mb-4 mt-1 pe-2">
+      <img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="" class="img-fluid">
+    </div>
+    <nav class="nav flex-column ps-3">
+      <!-- Sidebar Links -->
+      <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4" data-tooltip="Home">
+        <i class="fas fa-home"></i>
+      </a>
+      <a href="./user-dashboard.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Dashboard">
+        <i class="fas fa-circle-user"></i>
+      </a>
+      <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Statement">
+        <i class="fas fa-chart-line"></i>
+      </a>
+      <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Transfer History">
+        <i class="fas fa-clipboard-check"></i>
+      </a>
+      <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Domestic Transfer">
+        <i class="fas fa-exchange-alt"></i>
+      </a>
+      <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Interbank Transfer">
+        <i class="fas fa-money-bill-transfer"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Wire Transfer">
+        <i class="fas fa-hand-holding-dollar"></i>
+      </a>
+      <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2" data-tooltip="Logout">
+        <i class="fas fa-door-open"></i>
+      </a>
+      <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+      </a>
+    </nav>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="col-11 ml-6">
+
+     <!-- Navbar -->
+     <nav class="navbar bg-white shadow-sm p-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- Left: Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="#"><img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" alt="logo"/> Neobankia<span style="color: #4635C4">.</span></a>
+
+        <!-- Center: Navigation Links -->
+        <div class="d-flex justify-content-end align-items-center d-none d-lg-block">
+          <span class="me-3 fw-bold" id="name1">User</span>
+          <img src="" class="rounded-circle" width="40" height="40" alt="Profile" id="profilePic2">
+        </div>
+
+        <!-- Toggle for Mobile -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="collapse navbar-collapse d-lg-none bg-dark px-4" id="mobileMenu">
+        <ul class="navbar-nav">
+          <a href="./index.html" class="nav-link text-white-50 fs-5 mb-2 mt-4">
+            <i class="fas fa-home me-2"></i> <span>Go To Home</span>
+          </a>
+          <a href="./user-dashboard.html" class="nav-link text-white fs-5 mb-2">
+            <i class="fas fa-circle-user me-2"></i> <span>Dashboard Overview</span>
+          </a>
+          <a href="./statement.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-chart-line me-2"></i> <span>Bank Statement</span>
+          </a>
+          <a href="./dom.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-clipboard-check me-2"></i> <span>Transfer History</span>
+          </a>
+          <a href="./domestic-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-exchange-alt me-2"></i> <span>Domestic Transfer</span>
+          </a>
+          <a href="./interbank-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-money-bill-transfer me-2"></i> <span>Interbank Transfer</span>
+          </a>
+          <a href="./wire-transfer.html" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-hand-holding-dollar me-2"></i> <span>Wire Transfer</span>
+          </a>
+          <a onclick="logout()" class="nav-link text-white-50 fs-5 mb-2">
+            <i class="fas fa-door-open me-2"></i> <span>Logout</span>
+          </a>
+        </ul>
+      </div>
+    </nav>
+    
+
+
+    <div class="container py-4">
+        <h2 class="page-title mb-3">Domestic Transfer</h2>
+
+        <!-- Banner -->
+        <div class="alert alert-warning d-flex align-items-center shadow-soft" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            <div><strong>Notice:</strong> Ensure you fill the forms Carefully and correctly</div>
+        </div>
+
+        <!-- Transfer Card -->
+        <div class="card-surface shadow-soft">
+        <div class="card-body p-4 p-lg-5">
+            <h5 class="mb-4 detail fw-semibold">Enter Transfer Details</h5>
+
+            <form id="domesticTransferForm" novalidate>
+            <div class="row g-3">
+                <!-- Beneficiary Name -->
+                <div class="col-md-6">
+                <label for="beneficiaryName" class="form-label">
+                    Beneficiary Account Name <span class="req">*</span>
+                </label>
+                <input type="text" id="beneficiaryName" name="beneficiaryName" class="form-control border" placeholder="e.g., John A. Doe" required>
+                <div class="invalid-feedback">Please enter the beneficiary's name.</div>
+                </div>
+
+                <!-- Beneficiary Account Number -->
+                <div class="col-md-6">
+                <label for="beneficiaryAccount" class="form-label">
+                    Beneficiary Account Number <span class="req">*</span>
+                </label>
+                <input type="text" inputmode="numeric" pattern="^[0-9]{8,18}$" maxlength="18"
+                        id="beneficiaryAccount" name="beneficiaryAccount"
+                        class="form-control border" placeholder="e.g., 6037011580" required>
+                <div class="invalid-feedback">Enter a valid account number (8–18 digits).</div>
+                </div>
+
+                <!-- Bank Name -->
+                <div class="col-md-6">
+                <label for="bankName" class="form-label">
+                    Bank Name <span class="req">*</span>
+                </label>
+                <input type="text" id="bankName" name="bankName" class="form-control border" placeholder="e.g., Airstro Bank" required>
+                <div class="invalid-feedback">Please enter the bank name.</div>
+                </div>
+
+                <!-- Amount -->
+                <div class="col-md-6">
+                <label for="amount" class="form-label">
+                    Amount <span class="req">*</span>
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text">USD $</span>
+                    <input type="number" id="amount" name="amount" class="form-control border" step="0.01" min="1" placeholder="0.00" required>
+                </div>
+                <div class="invalid-feedback">Please enter an amount (minimum 1.00).</div>
+                </div>
+
+                <!-- Account Type -->
+                <div class="col-md-6">
+                <label for="accountType" class="form-label">
+                    Account Type <span class="req">*</span>
+                </label>
+                <select id="accountType" name="accountType" class="form-select" required>
+                    <option value="Savings" selected>Savings</option>
+                    <option value="Checking">Checking</option>
+                    <option value="Current">Current</option>
+                    <option value="Business">Business</option>
+                    <option value="Student">Student</option>
+                </select>
+                <div class="invalid-feedback">Select an account type.</div>
+                </div>
+
+                <!-- Description -->
+                <div class="col-12">
+                <label for="description" class="form-label">
+                    Description <span class="req">*</span>
+                </label>
+                <textarea id="description" name="description" class="form-control border" rows="4" placeholder="Transfer Description" required></textarea>
+                <div class="invalid-feedback">Please add a brief description.</div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn py-2 px-4 btn-submit text-white detail-bg print-btn">
+                <span class="me-2"><i class="bi bi-arrow-right-circle"></i></span>Transfer
+                </button>
+            </div>
+            </form>
+
+            <i class="section-note mt-4 mb-0">
+            Transfers may be subject to review. Ensure recipient details are correct before submitting.
+            </i>
+        </div>
+        </div>
+    </div>
+
+    <!-- Toast (top-right) -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080">
+        <div id="toast" class="toast align-items-center text-bg-dark border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="toastBody">Processing…</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+        <div class="container">
+          <div class="row gy-4 justify-content-between py-5">
+      
+            <!-- Company Branding -->
+            <div class="col-lg-3">
+              <h4 class="fw-bold text-uppercase">Neobankia</h4>
+              <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+              <div class="d-flex gap-3 mt-3">
+                <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+      
+            <!-- Quick Navigation -->
+            <div class="col-lg-2 col-md-6">
+              <h6 class="text-uppercase fw-semibold">Company</h6>
+              <ul class="list-unstyled mt-3">
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Careers</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Blog</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">About</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block">Press</a></li>
+              </ul>
+            </div>
+      
+            <!-- Resources -->
+            <div class="col-lg-3 col-md-6">
+              <h6 class="text-uppercase fw-semibold">Resources</h6>
+              <ul class="list-unstyled mt-3">
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Pricing</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Help Center</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Security</a></li>
+                <li><a href="#" class="text-white-50 text-decoration-none d-block">Privacy Policy</a></li>
+              </ul>
+            </div>
+      
+            <!-- Contact Info -->
+            <div class="col-lg-3">
+              <h6 class="text-uppercase fw-semibold">Contact</h6>
+              <ul class="list-unstyled mt-3 text-white-50">
+                <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+                <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
+                <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+              </ul>
+            </div>
+      
+          </div>
+      
+          <!-- Bottom Bar -->
+          <div class="text-center border-top border-secondary mt-2 py-4">
+            <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+          </div>
+        </div>
+      </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = '/user-login.html';
+    }
+    
+    // ✅ Redirect if not logged in
+    // if (!localStorage.getItem('token')) {
+    //   window.location.href = '/user-login.html';
+    // }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/user-login.html';
+      return;
+    }
+  
+    fetch('/api/user/profile', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => {
+      if (res.status === 401) {
+        localStorage.removeItem('token');
+        window.location.href = '/login.html';
+        return;
+      }
+      return res.json();
+    })
+    .then(user => {
+      if (user) {
+        document.getElementById('name1').textContent = `${user.fullName}`;
+        document.getElementById('name2').textContent = `${user.fullName}`;
+        document.getElementById('name3').textContent = `${user.fullName}`;
+        document.querySelector('.banner p').textContent = `Tips: Change your Internet banking password frequently to keep your account safe`;
+        document.querySelector('.banner img').src = user.profilePicture || '';
+      }
+    })
+    .catch(err => console.error(err));
+  });
+  
+    </script>
+  <script>
+    const form = document.getElementById('domesticTransferForm');
+    const toastEl = document.getElementById('toast');
+    const toastBody = document.getElementById('toastBody');
+    const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+
+    function showToast(msg){ toastBody.textContent = msg; toast.show(); }
+
+    // Simple numeric guard for account number
+    document.getElementById('beneficiaryAccount').addEventListener('input', (e)=>{
+      e.target.value = e.target.value.replace(/\D/g,'').slice(0,18);
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Bootstrap validation UI
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing…';
+      showToast('Submitting transfer…');
+
+      // Build payload
+      const payload = {
+        beneficiaryName: document.getElementById('beneficiaryName').value.trim(),
+        beneficiaryAccount: document.getElementById('beneficiaryAccount').value.trim(),
+        bankName: document.getElementById('bankName').value.trim(),
+        amount: Number(document.getElementById('amount').value),
+        accountType: document.getElementById('accountType').value,
+        description: document.getElementById('description').value.trim()
+      };
+
+      try {
+        // Optional auth if your API needs it
+        const token = localStorage.getItem('token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
+        // TODO: implement this endpoint on your server
+        const res = await fetch('/api/transfers/domestic', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json().catch(()=>({}));
+
+        if (!res.ok) throw new Error(data.message || 'Transfer Successful');
+
+        showToast('Transfer Successful');
+        form.reset();
+        form.classList.remove('was-validated');
+      } catch (err) {
+        console.error(err);
+        showToast(err.message || 'Network error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = original;
+      }
+    });
+  </script>
+</body>
+</html>

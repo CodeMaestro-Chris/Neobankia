@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Neobankia</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+    .hero {
+      /* background: #F3EFE7; */
+      color: #0d0d0d;
+      padding: 0 0 5rem;
+      text-align: center;
+    }
+    .navbar{
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background-color: #fff;
+    }
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
+    .navbar .navbar-brand:hover{
+      color: #212529 !important;
+    }
+    .navbar a:hover{
+        color: #4635C4 !important;
+    }
+    .nav-link {
+        font-weight: 600;
+    }
+    .app-store-btn {
+        border-radius: 25px;
+        padding: 0.6rem 1.5rem;
+        font-weight: 500;
+    }
+    .app-store-btn:hover{
+        color: white !important;
+    }
+    .app-store-btn.btn-light{
+        background-color: white;
+        transition: .2s;
+    }
+    .app-store-btn.btn-light:hover{
+        background-color: #4635C4;
+        color: white;
+    }
+    .app-store-btn.btn-dark:hover{
+        color: white !important;
+    }
+    .trusted-badge img {
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .icon-box {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 1rem;
+      background-color: #F3EFE7;
+      height: 100%;
+    }
+    .icon-box i {
+      font-size: 2rem;
+      color: #4635C4;
+      margin-bottom: 1rem;
+    }
+    .team img {
+      width: 100%;
+      border-radius: 50%;
+    }
+    .bg-light{
+      background-color: #faf7f2 !important;
+    }
+    .testimonial{
+        padding: 1.5rem;
+        border: 1px solid rgb(194, 194, 194);
+        border-radius: 10px;
+        /* margin: 0 1rem; */
+        font-size: 1rem;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        /* text-align: center; */
+    }
+    .testimonial{
+        width: 32%;
+    }
+    .bi-star-fill{
+        margin-right: 3px;
+        color: #4635C4;
+    }
+    @media screen and (max-width:1200px) {
+        .testimonial{
+            margin: 0 auto;
+            width: 31% !important;
+        }
+    }
+    @media screen and (max-width:900px) {
+        .testimonial{
+            margin: 0 auto;
+            width: 48% !important;
+        }
+    }
+    @media screen and (max-width:768px) {
+        .testimonial{
+            margin: 0 auto;
+            width: 48% !important;
+        }
+    }
+    @media screen and (max-width:500px) {
+        .testimonial{
+            width: 44% !important;
+            margin: 0 auto;
+        }
+    }
+    @media screen and (max-width:500px) {
+        .testimonial{
+            width: 90% !important;
+            margin: 0 auto;
+        }
+    }
+
+    footer {
+      background: #0d0d0d;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  
+<!-- Hero Section -->
+<section class="hero">
+  <!-- ✅ Navbar -->
+      <nav class="navbar py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- Left: Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="#"><img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" /> Neobankia<span style="color: #4635C4">.</span></a>
+
+        <!-- Center: Navigation Links -->
+        <ul class="nav d-none d-lg-flex justify-content-end text-dark">
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3 text-dark fw-semibold" href="#" data-bs-toggle="dropdown">
+              About Us
+            </a>
+            <ul class="dropdown-menu py-3">
+              <li><a class="dropdown-item py-2" href="#">Services</a></li>
+              <li><a class="dropdown-item py-2" href="#">Benefits</a></li>
+              <li><a class="dropdown-item py-2" href="#">FAQs</a></li>
+              <li><a class="dropdown-item py-2" href="#">Contact</a></li>
+              <li><a class="dropdown-item py-2" href="#">Features</a></li>
+              <li><a class="dropdown-item py-2" href="#">Testimonials</a></li>
+              <li><a class="dropdown-item py-2" href="#">Pricing</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Features</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Pricing</a></li>
+        </ul>
+
+        <!-- Right: CTA Button -->
+        <div class="d-none d-lg-block">
+          <a href="#" class="btn btn-dark app-store-btn">Get Started</a>
+        </div>
+
+        <!-- Toggle for Mobile -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="collapse navbar-collapse d-lg-none px-4" id="mobileMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">FAQs</a></li>
+          <li class="nav-item mt-2"><a class="btn btn-dark app-store-btn" href="#">Start Banking</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    
+  <section class="build-website-section text-center py-3 mt-2" style="background-color: white">
+    <div class="container build">
+    <!-- <img src="./images/dots.png" style="" alt=""> -->
+        <div class="trusted-badge mb-4 p-1 col-lg-4 col-md-6 mx-auto d-flex align-items-center justify-content-center border rounded-pill">
+            <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="User 1" class="hero-user1"/>
+            <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="User 2" class="hero-user2"/>
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 3" class="hero-user3"/>
+            <span class="ms-3 text-muted">Trusted by 21,000+ people</span>
+        </div>
+      <h2 class="display-5 fw-semibold">Grow your money with confidence</h2>
+      <p class="text-muted">
+        Neobankia gives you the tools you need to manage your money smartly <br> designed for speed, security, and simplicity.
+      </p>
+      <button class="btn btn-dark px-4 py-2 mt-3 rounded-pill">Get Started with Neobankia</button>
+    </div>
+
+    <!-- Icons and Avatars (Positioned absolutely) -->
+    <div class="floating-icons">
+      <!-- <img src="https://randomuser.me/api/portraits/men/71.jpg" class="floating-avatar top-left" alt="User Avatar" /> -->
+      <!-- <img src="https://randomuser.me/api/portraits/men/81.jpg" class="floating-icon top-center" alt="Icon" /> -->
+      <img src="https://randomuser.me/api/portraits/men/64.jpg" class="floating-avatar top-right d-none d-lg-block" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/women/79.jpg" class="floating-icon bottom-left d-none d-lg-block" alt="Icon" />
+      <img src="https://randomuser.me/api/portraits/men/15.jpg" class="floating-avatar bottom-right d-none d-lg-block" alt="User Avatar" />
+    </div>
+  </section>
+</section>
+
+<div class="container overflow-hidden trusted mb-5">
+    <!-- <h2 class="text-center mb-5 caption">Trusted by 18,000+ customers</h2> -->
+
+    <!-- Row 1 -->
+    <div class="row mb-5 gap-3">
+      <!-- <div class="slider-track slider-track-left"> -->
+        <!-- Duplicate content for seamless loop -->
+        <div class="testimonial bg-light"><br>
+        <p>"Neobankia has completely transformed how I manage my money — it's fast, reliable, and intuitive." - Emily R.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"With Neobankia, I’ve stopped missing bill deadlines and gained total financial control." - Samuel W.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"I was skeptical at first, but now I can’t imagine life without Neobankia’s budget planner." - Tania H.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"The insights from Neobankia help me spend smarter and save more every month." - Victor A.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="testimonial bg-light"><br>
+        <p>"Neobankia's intuitive dashboard gives me peace of mind with every transaction." - Linda G.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"Thanks to Neobankia, I’ve reduced unnecessary spending and improved my credit score!" - Martin D.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"What I love most is the simplicity — Neobankia makes finance feel effortless." - Grace Y.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"Neobankia helped me catch a subscription I forgot I was still paying for. Instant savings!" - Felix B.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <!-- Second track -->
+        <div class="testimonial bg-light"><br>
+        <p>"Their 24/7 support is always ready to help — Neobankia truly cares about users." - Janet M.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"Love the security features. I feel confident managing all my finances through Neobankia." - Kareem S.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"Clean UI, smart tools, and the best user experience I’ve had with a finance app." - Nneka O.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light"><br>
+        <p>"Neobankia made sending money to family abroad quick and hassle-free." - Daniel E.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light">
+        <p>"Neobankia helped me automate my savings goals without even thinking about it." - Chloe F.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light">
+        <p>"Neobankia’s real-time notifications keep me on top of every transaction." - Anabella I.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+
+        <div class="testimonial bg-light">
+        <p>"From bill reminders to expense summaries, Neobankia makes life so much easier." - Ethan D.</p><br>
+        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+    </div>
+</div>
+
+  <section class="build-website-section text-center py-5">
+    <div class="container build">
+    <!-- <img src="./images/dots.png" style="" alt=""> -->
+      <h2 class="display-5 fw-bold">Build Your Financial Future</h2>
+      <p class="text-muted">
+        Neobankia gives you the tools you need to manage your money smartly—designed for speed, security, and simplicity.
+      </p>
+      <button class="btn btn-dark px-4 py-2 mt-3 rounded-pill">Get Started with Neobankia</button>
+    </div>
+
+    <!-- Icons and Avatars (Positioned absolutely) -->
+    <div class="floating-icons">
+      <img src="https://randomuser.me/api/portraits/men/71.jpg" class="floating-avatar top-left d-none d-lg-block" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/men/81.jpg" class="floating-icon top-center" alt="Icon" />
+      <img src="https://randomuser.me/api/portraits/women/64.jpg" class="floating-avatar top-right" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/women/71.jpg" class="floating-icon bottom-left" alt="Icon" />
+      <img src="https://randomuser.me/api/portraits/men/15.jpg" class="floating-avatar bottom-right d-none d-lg-block" alt="User Avatar" />
+    </div>
+  </section>
+
+
+<footer class="bg-dark text-white pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+      <div class="col-lg-3">
+        <h4 class="fw-bold text-uppercase">Neobankia</h4>
+        <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="col-lg-2 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Company</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Careers</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Blog</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">About</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-uppercase fw-semibold">Resources</h6>
+        <ul class="list-unstyled mt-3">
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Pricing</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Help Center</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">Security</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none d-block">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+234 701 234 5789</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Lagos, Nigeria</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-5 py-4">
+      <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

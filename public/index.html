@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Neobankia </title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+}
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #F3EFE7;
+}
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.navbar .navbar-brand:hover{
+  color: #212529 !important;
+}
+.navbar a:hover{
+    color: #4635C4 !important;
+}
+.nav-link {
+    font-weight: 600;
+}
+.hero {
+    padding: 0;
+    background: #F3EFE7;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .subtext {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.hero h1 {
+    font-size: 3.3rem;
+    font-weight: 600 !important;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.app-store-btn {
+    border-radius: 25px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+}
+.app-store-btn:hover{
+    color: white !important;
+}
+.app-store-btn.btn-light{
+    background-color: white;
+    transition: .2s;
+}
+.app-store-btn.btn-light:hover{
+    background-color: #4635C4;
+    color: white;
+}
+.trusted-badge img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.phone-mockup {
+    max-width: 80%;
+    z-index: 2;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.logo-bar img {
+    height: 32px;
+    margin-right: 1rem;
+}
+.flex-direction-column{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center !important;
+}
+.bt-shadow{
+    /* margin-top: -5rem; */
+    max-width: 100%;
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.bt-shadow2{
+    max-width: 100%;
+    z-index: 8;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .bt-shadow2{
+    max-width: 120%;
+    opacity: 0.8;
+    bottom: 20px;
+}
+.phone-mockup {
+    max-width: 70%;
+    z-index: 2;
+}
+}
+.hero-user1{
+    border: 2px solid #F3EFE7;
+}
+.hero-user2{
+    border: 2px solid #F3EFE7;
+    margin-left: -7px;
+}
+.title{
+    font-size: 3.5rem !important;
+    font-weight: 600 !important;
+}
+.build-website-section {
+  /* background-color: #F5F4EF; */
+  position: relative;
+  overflow: hidden;
+}
+
+
+  </style>
+</head>
+<body>
+
+  
+
+  <section class="hero mb-5">
+    <!-- ✅ Navbar -->
+      <nav class="navbar py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        
+        <!-- Left: Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="#"><img src="./images/HI01FG5KkiWkx9iG6fa2VBQVQM.png" /> Neobankia<span style="color: #4635C4">.</span></a>
+
+        <!-- Center: Navigation Links -->
+        <ul class="nav d-none d-lg-flex justify-content-end text-dark">
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3 text-dark fw-semibold" href="#" data-bs-toggle="dropdown">
+              About Us
+            </a>
+            <ul class="dropdown-menu py-3">
+              <li><a class="dropdown-item py-2" href="./about.html">Services</a></li>
+              <li><a class="dropdown-item py-2" href="./reviews.html">Benefits</a></li>
+              <li><a class="dropdown-item py-2" href="#faq">FAQs</a></li>
+              <li><a class="dropdown-item py-2" href="./contact.html">Contact</a></li>
+              <li><a class="dropdown-item py-2" href="./features.html">Features</a></li>
+              <li><a class="dropdown-item py-2" href="./reviews.html">Testimonials</a></li>
+              <li><a class="dropdown-item py-2" href="#pricing">Pricing</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Features</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link px-3 text-dark fw-semibold" href="#">Pricing</a></li>
+        </ul>
+
+        <!-- Right: CTA Button -->
+        <div class="d-none d-lg-block">
+          <a href="#" class="btn btn-dark app-store-btn">Get Started</a>
+        </div>
+
+        <!-- Toggle for Mobile -->
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="collapse navbar-collapse d-lg-none px-4" id="mobileMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="./reviews.html">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Benefits</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">FAQs</a></li>
+          <li class="nav-item mt-2"><a class="btn btn-dark app-store-btn" href="#">Start Banking</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <!-- Hero Section -->
+    <div class="flex-direction-column mt-5">
+      <!-- Text content -->
+      <div class="col-md-6 text-center px-2 pt-4 mb-5">
+        <!-- Trust badges -->
+        <div class="trusted-badge mt-5 mb-4 p-1 col-lg-6 col-md-6 mx-auto d-flex align-items-center justify-content-center border rounded-pill">
+          <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="User 1" class="hero-user1"/>
+          <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="User 2" class="hero-user2"/>
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 3" class="hero-user3"/>
+          <span class="ms-3 text-muted">Trusted by 21,000+ people</span>
+        </div>
+        <h1 class="mb-3">Fastest way to manage<br />payment anytime you want.</h1>
+        <p class="mb-4">Experience smooth, secure, and smart financial operations – directly from your mobile device.</p>
+        <div class="d-flex gap-3 justify-content-center">
+          <a href="#" class="btn btn-dark app-store-btn">Start Banking</a>
+          <a href="#" class="btn btn-light app-store-btn">Go to Login</a>
+        </div>
+      </div>
+
+      <!-- Image content -->
+      <div class="col-md-12 text-center mt-5 mt-md-0 position-relative" style="background-image: url(./images/WGUnCmbjAOmiB6xJq46r4whcqo.png); background-position: center; background-size: 80%; background-repeat: no-repeat;">
+        <!-- <img src="./images/WGUnCmbjAOmiB6xJq46r4whcqo.png" alt="" class="spiral"> -->
+        <img src="./images/phone1.png" alt="App Mockup" class="phone-mockup mt-5" />
+        <img src="images/938o5GSmp7c9eUmmqmPjOi9Bs.png" alt="" class="bt-shadow2">
+        <img src="images/938o5GSmp7c9eUmmqmPjOi9Bs.png" alt="" class="bt-shadow">
+      </div>
+    </div>
+
+  </section>
+  
+
+  <main class="container">
+    <!-- Main content -->
+      <section id="statsSection" class="my-5 mx-auto py-5 row gap-4 justify-content-between top-users">
+      <h2 class="fw-semibold col-12 col-lg-6">
+        Top used financial app used by millions of happy users.
+      </h2>
+
+      <div class="row gap-4 justify-content-between col-12 col-lg-5 mb-5">
+        <div class="col-6">
+          <h1 class="display-5 title detail">
+            <span id="usersCount">0</span>M+
+          </h1>
+          <span class="text-muted">Users Worldwide</span>
+        </div>
+        <div class="col-sm-7 col-md-5 col-lg-4">
+          <h1 class="display-5 title detail">
+            <span id="ratingCount">0</span>
+          </h1>
+          <span class="text-muted">Rating out of 5</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="my-5 py-5">
+      <h2 class="text-center mb-3 caption">Neobankia offers extensive features</h2>
+      <p class="text-center text-muted mb-5">We give you the blocks needed to create a truly professional experience.</p>
+
+      <div class="d-block d-lg-flex justify-content-between" id="features">
+        <!-- Left Side: Feature List -->
+        <div class="col-lg-6 feature-items">
+          <div class="feature-item active" data-image="images/chart1.png">
+            <h5 class="fw-semibold">Automatic Expense Tracking</h5>
+            <p class="feature-desc">Automatically categorize expenses to see where money goes.</p>
+          </div>
+          <div class="feature-item" data-image="images/chart2.png">
+            <h5 class="fw-semibold">Streamlined Bill Payment</h5>
+            <p class="feature-desc">Pay bills and manage payments all in one place without any issue.</p>
+          </div>
+          <div class="feature-item" data-image="images/chart1.png">
+            <h5 class="fw-semibold">Real-time Money Activity</h5>
+            <p class="feature-desc">Get notifications for unusual spending activity.</p>
+          </div>
+          <div class="feature-item" data-image="images/chart2.png">
+            <h5 class="fw-semibold">Automatic Bank Sync</h5>
+            <p class="feature-desc">Sync and update your bank transactions automatically.</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Feature Image -->
+        <div class="col-lg-6 col-12 p-0 p-md-5 feature-image-wrapper">
+          <img id="featureImage" src="images/chart1.png" class="feature-image show" alt="Feature Preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS 1 -->
+    <section class="row justify-content-between align-items-center my-5" id="benefits"> 
+        <div class="col-12 col-lg-5">
+          <p class="detail fw-semibold">BENEFITS</p>
+          <h1 class="caption">Save time and money with our powerful tools.</h1>
+          <p class="note mt-3 mb-3">Neobankia gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
+          <a href="#" class="btn btn-dark app-store-btn">Get Started</a>
+        </div>
+        <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+          <div class="benefit-img-wrapper py-5 px-4">
+            <img src="./images/person1.jpg" alt="" class="w-50 mb-4">
+            <img src="./images/atm1.png" alt="" class="atm-card w-50">
+            <img src="./images/transactions.png" alt="" class="w-75">
+          </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS 2 -->
+    <section class="row justify-content-between align-items-center mb-0 mt-5 my-lg-5 pt-5">
+        <div class="col-12 col-lg-5">
+          <p class="detail fw-semibold">BENEFITS</p>
+          <h1 class="caption">More than 18000+ people use Neobankia.</h1>
+          <p class="note mt-3 mb-4">Neobankia gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
+          <a href="#" class="btn btn-dark app-store-btn">Get Started</a>
+        </div> 
+        <div class="col-12 col-lg-6 mb-lg-5 mb-0 mt-5 mt-lg-0">
+          <div class="benefit-img-wrapper py-5 px-4 row justify-content-center align-items-center">
+            <img src="./images/acct1.png" alt="" class="w-75 mb-4">
+            <img src="./images/acct2.png" alt="" class="w-100 mb-4">
+            <img src="./images/acct3.png" alt="" class="w-75 mb-4">
+            <img src="./images/acct4.png" alt="" class="w-75 mb-4">
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <section class="my-0 my-lg-5 more-features py-5">
+    <h2 class="text-center my-5 caption">Loaded with more features</h2>
+    <div class="row g-4 container mx-auto mb-5">
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-calendar3 detail me-2 fs-4"></i>
+            <strong>Essential Budget Planning</strong>
+          </div>
+          <p class="text-muted mb-0">Easily create and manage budgets to track spending.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-bar-chart-line detail me-2 fs-4"></i>
+            <strong>Automatic Expense Tracking</strong>
+          </div>
+          <p class="text-muted mb-0">Automatically categorize expenses to see where money goes.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-bullseye detail me-2 fs-4"></i>
+            <strong>Custom Goals</strong>
+          </div>
+          <p class="text-muted mb-0">Set custom savings goals with auto-contribution.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-wallet2 detail me-2 fs-4"></i>
+            <strong>Streamlined Bill Payment</strong>
+          </div>
+          <p class="text-muted mb-0">Pay bills and manage payments all in one place.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-bell detail me-2 fs-4"></i>
+            <strong>Real-time Activity Notifications</strong>
+          </div>
+          <p class="text-muted mb-0">Get notifications for unusual spending activity.</p>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-6">
+        <div class="p-4 rounded-4 bg-white h-100">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-brightness-high detail me-2 fs-4"></i>
+            <strong>Personalized Interface Themes</strong>
+          </div>
+          <p class="text-muted mb-0">Toggle between light and dark interface themes.</p>
+        </div>
+      </div>
+      <div class="col-12 text-center mt-5">
+        <p class="text-center col-12 col-lg-7 mx-auto primary-text">Neobankia gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
+        <a href="#" class="btn btn-dark app-store-btn mx-auto w-20 mt-2">Get Started</a>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="testimonial-slider py-5 text-white" style="background-image: url(./images/Jd1WHxCMwSHxmIt8EXqszS3kjU.png); background-position: center center; background-size: 90%; background-repeat: no-repeat;">
+  <div class="container overflow-hidden mt-5 trusted">
+    <h2 class="text-center mb-5 caption">Trusted by 18,000+ customers</h2>
+
+    <!-- Row 1 -->
+    <div class="slider-wrapper mb-5">
+      <div class="slider-track slider-track-left">
+        <!-- Duplicate content for seamless loop -->
+        <div class="testimonial-box"><br>
+          <p>"Neobankia caught fraudulent charges on my accounts that I never would have noticed." - Chris P.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"This app makes budgeting so simple. I actually look forward to using it every month." - Kevin T.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"I can finally pay all my bills on time and in one place. Neobankia kept me organized." - Michael B.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"Knowing my credit score and how to improve it has been a game changer thanks to Neobankia." - David L.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+
+        <!-- Duplicate again -->
+        <div class="testimonial-box"><br>
+          <p>"Neobankia caught fraudulent charges on my accounts that I never would have noticed." - Chris P.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"This app makes budgeting so simple. I actually look forward to using it every month." - Kevin T.</p> 
+        <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"I can finally pay all my bills on time and in one place. Neobankia kept me organized." - Michael B.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box"><br>
+          <p>"Knowing my credit score and how to improve it has been a game changer thanks to Neobankia." - David L.</p> <br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="slider-wrapper">
+      <div class="slider-track slider-track-right mb-5">
+        <!-- Duplicate content for seamless loop -->
+        <div class="testimonial-box">
+          <p>"The auto-budgeting feature saved me hours each week!" - Clara S.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Best app for tracking all my transactions across banks." - James R.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Simple, secure, and sleek. Just what I needed." - Aisha K.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Neobankia's alerts keep me on track every month." - Brian G.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+
+        <!-- Duplicate again -->
+        <div class="testimonial-box">
+          <p>"The auto-budgeting feature saved me hours each week!" - Clara S.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Best app for tracking all my transactions across banks." - James R.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Simple, secure, and sleek. Just what I needed." - Aisha K.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <div class="testimonial-box">
+          <p>"Neobankia's alerts keep me on track every month." - Brian G.</p><br>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<main class="container my-5 py-5" id="faq">
+  <h1 class="text-center caption">Frequently Asked Questions</h1>
+  <!-- Accordion start -->
+<div class="accordion" id="accordionExample">
+
+  <!-- 1. How do I open an account? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <h5>How do I open an account?</h5>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Opening an account is fast and free. Just download the app, click on “Create Account,” and follow the prompts to verify your identity.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Is my money safe with Neobankia? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h5>Is my money safe with Neobankia?</h5>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Absolutely. We use bank-grade encryption and are fully licensed and regulated. Your funds are also insured up to the legal limit.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. How can I send or receive money? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h5>How can I send or receive money?</h5>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        You can send or receive money instantly using a phone number, account number, or QR code — all from your dashboard.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Are there any hidden charges? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h5>Are there any hidden charges?</h5>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        No. We believe in full transparency. All fees are clearly listed and shown before any transaction is completed.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. What should I do if I forget my password? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <h5>What should I do if I forget my password?</h5>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Tap “Forgot Password” on the login screen and follow the instructions. You’ll be able to reset your password securely in minutes.
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Can I use Neobankia outside my country? -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <h5>Can I use Neobankia outside my country?</h5>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes! Neobankia works globally. You can access your account, send or receive money, and manage your finances wherever you are.
+      </div>
+    </div>
+  </div>
+
+</div>
+<p class="mt-5 text-center">Have more questions? <a href="./contact.html" class="detail text-decoration-none">Contact our support</a></p>
+<!-- Accordion end -->
+</main>
+
+  
+  <section class="build-website-section text-center py-5">
+    <div class="container build">
+    <!-- <img src="./images/dots.png" style="" alt=""> -->
+      <h2 class="display-5 fw-bold">Build Your Financial Future</h2>
+      <p class="text-muted">
+        Neobankia gives you the tools you need to manage your money smartly—designed for speed, security, and simplicity.
+      </p>
+      <button class="btn btn-dark px-4 py-2 mt-3 rounded-pill">Get Started with Neobankia</button>
+    </div>
+
+    <!-- Icons and Avatars (Positioned absolutely) -->
+    <div class="floating-icons">
+      <img src="https://randomuser.me/api/portraits/men/71.jpg" class="floating-avatar top-left d-none d-lg-block" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/men/81.jpg" class="floating-icon top-center" alt="Icon" />
+      <img src="https://randomuser.me/api/portraits/women/64.jpg" class="floating-avatar top-right" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/women/71.jpg" class="floating-icon bottom-left" alt="Icon" />
+      <img src="https://randomuser.me/api/portraits/men/15.jpg" class="floating-avatar bottom-right d-none d-lg-block" alt="User Avatar" />
+    </div>
+  </section>
+
+
+<!-- FOOTER  -->
+<footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+  <div class="container">
+    <div class="row gy-4 justify-content-between py-5">
+
+      <!-- Company Branding -->
+    <div class="col-lg-3">
+      <h4 class="fw-bold text-uppercase">Neobankia</h4>
+      <p class="text-white-50 mt-2">Revolutionizing finance with simple, smart, and secure banking for everyone.</p>
+      <div class="d-flex gap-3 mt-3">
+        <span class="text-white fs-5"><i class="bi bi-facebook"></i></span>
+        <span class="text-white fs-5"><i class="bi bi-linkedin"></i></span>
+        <span class="text-white fs-5"><i class="bi bi-instagram"></i></span>
+      </div>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="col-lg-2 col-md-6">
+      <h6 class="text-uppercase fw-semibold">Company</h6>
+      <ul class="list-unstyled mt-3">
+        <li><a href="./index.html" class="text-white-50 text-decoration-none d-block mb-2">Home</a></li>
+        <li><a href="./about.html" class="text-white-50 text-decoration-none d-block mb-2">About Us</a></li>
+        <li><a href="./features.html" class="text-white-50 text-decoration-none d-block mb-2">Features</a></li>
+        <li><a href="./reviews.html" class="text-white-50 text-decoration-none d-block mb-2">Our Reviews</a></li>
+        <li><a href="./contact.html" class="text-white-50 text-decoration-none d-block">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="col-lg-3 col-md-6">
+      <h6 class="text-uppercase fw-semibold">User Dashboard</h6>
+      <ul class="list-unstyled mt-3">
+        <li><a href="./user-dashboard.html" class="text-white-50 text-decoration-none d-block mb-2">Overview</a></li>
+        <li><a href="./statement.html" class="text-white-50 text-decoration-none d-block mb-2">Bank Statement</a></li>
+        <li><a href="./interbank-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Inter-BankTransfer</a></li>
+        <li><a href="./domestic-transfer.html" class="text-white-50 text-decoration-none d-block mb-2">Domestic Transfer</a></li>
+        <li><a href="./wire-transfer.html" class="text-white-50 text-decoration-none d-block">Wire Transfer</a></li>
+      </ul>
+    </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-3">
+        <h6 class="text-uppercase fw-semibold">Contact</h6>
+        <ul class="list-unstyled mt-3 text-white-50">
+          <li><i class="bi bi-envelope-fill me-2"></i>support@neobankia.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center border-top border-secondary mt-2 py-4">
+      <small class="text-white-50">&copy; 2025 Neobankia. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+
+
+  <!-- FIRST COUNTER -->
+    <script>
+    function countUp(id, endValue, suffix = "") {
+      const el = document.getElementById(id);
+      let start = 0;
+      const duration = 1000;
+      const increment = endValue / (duration / 50);
+
+      const counter = setInterval(() => {
+        start += increment;
+        if (start >= endValue) {
+          start = endValue;
+          clearInterval(counter);
+        }
+        el.textContent = (Math.round(start * 10) / 10) + suffix;
+      }, 50);
+    }
+
+    let hasCounted = false; // Prevents multiple triggers
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasCounted) {
+            countUp("usersCount", 20.3);
+            countUp("ratingCount", 4.8);
+            hasCounted = true;
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 } // Adjust sensitivity
+    );
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const target = document.getElementById("statsSection");
+      if (target) observer.observe(target);
+    });
+
+
+
+  // ON-CLICK SLIDING ANIMATION 
+  const features = document.querySelectorAll(".feature-item");
+const imageWrapper = document.querySelector(".feature-image-wrapper");
+let featureImage = document.getElementById("featureImage"); // initial reference
+let currentIndex = 0;
+
+features.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    if (index === currentIndex) return;
+
+    // Highlight active feature
+    features.forEach(el => el.classList.remove("active"));
+    item.classList.add("active");
+
+    const newImageSrc = item.getAttribute("data-image");
+    const isForward = index > currentIndex;
+
+    // Create and insert new image
+    const newImg = document.createElement("img");
+    newImg.src = newImageSrc;
+    newImg.className = `feature-image ${isForward ? "slide-in-right" : "slide-in-left"}`;
+    imageWrapper.appendChild(newImg);
+
+    // Trigger slide out on current image
+    featureImage.classList.add(isForward ? "slide-out-left" : "slide-out-right");
+
+    setTimeout(() => {
+      // Remove old image
+      featureImage.remove();
+
+      // Finalize new image
+      newImg.classList.remove("slide-in-left", "slide-in-right");
+      newImg.classList.add("show");
+      newImg.id = "featureImage";
+
+      // Update reference
+      featureImage = newImg;
+      currentIndex = index;
+    }); // ⏱ match your CSS transition
+  });
+});
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+</body>
+</html>
