@@ -100,7 +100,7 @@
         <i class="fas fa-door-open"></i>
       </a>
       <a href="./profile.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
-        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic">
       </a>
     </nav>
   </div>
@@ -200,11 +200,6 @@
         <div class="col-md-6">
           <label class="form-label required">IBAN/Beneficiary Account Number <span class="req">*</span></label>
           <input id="beneficiaryAccount" class="form-control border" required>
-        </div>
-
-        <div class="col-md-6">
-          <label class="form-label">Password <span class="req">*</span></label>
-          <input id="address" class="form-control border" placeholder="--- ---">
         </div>
 
         <div class="col-md-6">
@@ -386,9 +381,9 @@
         <div class="col-lg-3">
           <h6 class="text-uppercase fw-semibold">Contact</h6>
           <ul class="list-unstyled mt-3 text-white-50">
-            <li><i class="bi bi-envelope-fill me-2"></i>support@PinnaTrustBank.com</li>
-            <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
-            <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+            <li><i class="bi bi-envelope-fill me-2"></i>support@pinnatrustbank.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+1 (202)-984-9810</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>441 Q St NW Washington, DC 20001</li>
           </ul>
         </div>
   
@@ -402,6 +397,66 @@
   </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
+
+<!-- FOR EXPORTING TRANSFER DETAILS  -->
+<script>
+  function saveTransaction(form) {
+  const transactionId = "TX" + Math.floor(Math.random() * 1000000);
+  const transaction = {
+    id: transactionId,
+    amount: form.amount.value ? `$${form.amount.value}` : "$0.00",
+    name: form.beneficiaryName.value || "N/A",
+    account: form.beneficiaryAccount.value || "N/A",
+    type: form.accountType.value || "N/A",
+    description: form.description.value || "N/A",
+    bank: form.bankName.value || "N/A",
+    date: new Date().toLocaleString(),
+    status: "Success",
+  };
+
+  // Get old transactions from localStorage
+  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+  // Add new one
+  transactions.push(transaction);
+
+  // Save back to localStorage
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  
+}
+
+</script>
+
+<script>
+  function getBalance() {
+    let balance = localStorage.getItem("accountBalance");
+    if (!balance) {
+      balance = 669013.00; // default starting balance
+      localStorage.setItem("accountBalance", balance);
+  }
+  return parseFloat(balance);
+  }
+
+  function updateBalanceDisplay() {
+    const balanceElements = document.querySelectorAll(".balance-amount");
+    const balance = getBalance();
+    balanceElements.forEach(el => {
+      el.textContent = "USD $" + balance.toLocaleString(undefined, {minimumFractionDigits: 2});
+    });
+  }
+
+  function deductBalance(amount) {
+    let balance = getBalance();
+    balance -= parseFloat(amount);
+    if (balance < 0) balance = 0;
+    localStorage.setItem("accountBalance", balance);
+    updateBalanceDisplay();
+  }
+
+  // Update balance on load
+  document.addEventListener("DOMContentLoaded", updateBalanceDisplay);
+</script>
+
 <script>
   document.getElementById("wireTransferForm").addEventListener("submit", function(e) {
     e.preventDefault(); // stop refresh
@@ -450,6 +505,12 @@
   
       // ✅ show success modal
       new bootstrap.Modal(document.getElementById("successModal")).show();
+
+      // ✅ save transaction in localStorage
+      saveTransaction(form);
+
+      // ✅ deduct from balance
+      deductBalance(form.amount.value || 0);
   
     } catch (err) {
       console.error("Frontend error in verify-password:", err);
@@ -491,6 +552,15 @@
     return res.json();
   })
   .then(user => {
+
+    // Profile picture
+    if (user.profilePicture) {
+      const profilePic = document.getElementById("profilePic");
+      const profilePic2 = document.getElementById("profilePic2");
+      if (profilePic) profilePic.src = user.profilePicture;
+      if (profilePic2) profilePic2.src = user.profilePicture;
+    }
+    
     if (user) {
       document.getElementById('name1').textContent = `${user.fullName}`;
       document.getElementById('name2').textContent = `${user.fullName}`;

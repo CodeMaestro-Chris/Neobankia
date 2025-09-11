@@ -116,7 +116,7 @@
         <i class="fas fa-door-open"></i>
       </a>
       <a href="./profile.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
-        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic">
       </a>
     </nav>
   </div>
@@ -186,7 +186,7 @@
         <!-- Scrollable Table -->
         <div class="table-responsive">
           <table class="table align-middle shadow-sm border" id="transactionTable">
-            <thead class="text-muted fw-bold">
+            <thead class="text-muted fw-bold table-dark">
               <tr>
                 <th>ID</th>
                 <th>AMOUNT</th>
@@ -199,7 +199,10 @@
                 <th>STATUS</th>
               </tr>
             </thead>
-            </table>
+            <tbody id="transactionTableBody" class="text-center">
+              
+            </tbody>
+          </table>
         </div>
     </div>
 </div>
@@ -225,4 +228,84 @@ function logout() {
   newWin.print();
 }
 </script>
+
+<!-- FOR IMPORTING TRANSFER DETAILS -->
+<script>
+  function loadTransactions() {
+    const tbody = document.getElementById("transactionTableBody");
+    tbody.innerHTML = ""; // clear old rows first
+
+    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+    transactions.forEach(tx => {
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `
+        <td>${tx.id}</td>
+        <td>${tx.amount}</td>
+        <td>${tx.name}</td>
+        <td>${tx.account}</td>
+        <td>${tx.type}</td>
+        <td>${tx.description}</td>
+        <td>${tx.bank}</td>
+        <td>${tx.date}</td>
+        <td><span class="badge bg-success">${tx.status}</span></td>
+      `;
+      tbody.appendChild(newRow);
+    });
+  }
+
+  // Run on page load
+  window.addEventListener("DOMContentLoaded", loadTransactions);
+</script>
+
+
+  
+<script>
+  function logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/user-login.html';
+  }
+  
+  // ✅ Redirect if not logged in
+  if (!localStorage.getItem('token')) {
+    window.location.href = '/user-login.html';
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/user-login.html';
+    return;
+  }
+
+  fetch('/api/user/profile', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(res => {
+    if (res.status === 401) {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+      return;
+    }
+    return res.json();
+  })
+  .then(user => {
+    
+    // Profile picture
+    if (user.profilePicture) {
+      const profilePic = document.getElementById("profilePic");
+      const profilePic2 = document.getElementById("profilePic2");
+      if (profilePic) profilePic.src = user.profilePicture;
+      if (profilePic2) profilePic2.src = user.profilePicture;
+    }
+
+    if (user) {
+      document.getElementById('name1').textContent = `${user.fullName}`;
+    }
+  })
+  .catch(err => console.error(err));
+});
+  </script>
 </body>

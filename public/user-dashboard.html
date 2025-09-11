@@ -166,7 +166,8 @@
     
 
     <!-- Welcome Banner -->
-    <div class="banner my-3 rounded container-fluid">
+    <main class="container">
+    <div class="banner my-4 rounded">
       <div class="d-flex justify-content-between p-4 detail-bg2 position-relative overflow-hidden">
         <div class="col-12 col-lg-8">
           <h3>Welcome, <span id="name2" class="detail">User</span> </h3>
@@ -188,14 +189,14 @@
       </div>
     </div>
 
-    <div class="border d-flex align-items-center container-fluid mb-5 mx-auto detail-bg2">
+    <div class="border d-flex align-items-center mb-5 mx-auto detail-bg2">
       <i class="fa fa-circle-info p-3 detail"></i>
       <marquee behavior="100" direction="left" class="detail">Notice: We are committed to providing a secured and convenient banking experience to all our customers through excellent services powered by state of the art technologies, however, if you notice anything SUSPICIOUS with your online banking portal, kindly contact your account manager for immediate action | Thank you for banking with us!</marquee>
     </div>
 
     <!-- Cards Section -->
    
-    <div class="container-fluid">
+    
       <div class="row g-4">
         <!-- Available Balance -->
         <div class="col-md-4">
@@ -213,7 +214,7 @@
           <div class="border card-custom">
             <img src="./images/arrow-blue.svg" alt="" class="img-fluid mb-3">
             <h5>Total Book Balance</h5>
-            <div class="sub-text fw-semibold">AS AT AUGUST 16, 2025</div>
+            <div class="sub-text fw-semibold">ACCOUNT NUMBER: 6037011580</div>
             <div class="balance-amount">USD $269,013.00</div>
             <canvas id="bookChart" height="130" class="mt-5"></canvas>
           </div>
@@ -236,9 +237,9 @@
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     
-    <div class="container-fluid my-5">
+    <div class="my-5">
   <div class="row g-4">
     
     <!-- Logged In From -->
@@ -290,7 +291,7 @@
 
   <!-- Responsive scrollable table -->
   <div class="table-responsive">
-    <table class="table align-middle">
+    <table class="table align-middle text-center">
       <thead class="text-muted fw-bold">
         <tr>
           <th>TRANSACTION TYPE</th>
@@ -303,34 +304,21 @@
       </thead>
       <tbody>
         <tr>
-          <td><span class="text-success fs-5">✔</span> Debit</td>
-          <td class="text-success">USD $ 860500</td>
-          <td><i class="bi bi-person"></i> Wire transfer</td>
-          <td>Contract advance payment</td>
-          <td>15/02/2025 08:30 am</td>
-          <td class="text-success fw-bold">Successful</td>
-        </tr>
-        <tr>
-          <td><span class="text-success fs-5">✔</span> Debit</td>
-          <td class="text-success">USD $ 14610</td>
-          <td><i class="bi bi-person"></i> Bill pay</td>
-          <td>IRS fp Anual</td>
-          <td>12/02/2025 13:55 pm</td>
-          <td class="text-success fw-bold">Successful</td>
-        </tr>
-        <tr>
-          <td><span class="text-success fs-5">✔</span> Debit</td>
-          <td class="text-success">USD $ 2200</td>
-          <td><i class="bi bi-person"></i> Buchanan Field Airport</td>
-          <td>Flight ticket</td>
-          <td>09/02/2025 11:11 am</td>
-          <td class="text-success fw-bold">Successful</td>
+          <td>-</td>
+          <td class="text-success">$ -</td>
+          <td><i class="bi bi-person"></i> -</td>
+          <td>-</td>
+          <td>---</td>
+          <td class="text-success fw-bold">-</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div class="text-end mt-2">
+    <a href="./dom.html" class="text-primary fs-6 text-decoration-none">View Transfer History →</a>
+  </div>
 </div>
-
+</main>
 </div>
   </div>
 </div>
@@ -378,9 +366,9 @@
       <div class="col-lg-3">
         <h6 class="text-uppercase fw-semibold">Contact</h6>
         <ul class="list-unstyled mt-3 text-white-50">
-          <li><i class="bi bi-envelope-fill me-2"></i>support@PinnaTrustBank.com</li>
-          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
-          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+          <li><i class="bi bi-envelope-fill me-2"></i>support@pinnatrustbank.com</li>
+          <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+1 (202)-984-9810</li>
+          <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>441 Q St NW Washington, DC 20001</li>
         </ul>
       </div>
 
@@ -438,12 +426,43 @@
       // document.querySelector('.banner img').src = user.profilePicture || '';
       document.getElementById('profilePic').src = user.profilePicture; 
       document.getElementById('profilePic2').src = user.profilePicture; 
+      document.getElementById('profilePic3').src = user.profilePicture; 
     }
   })
   .catch(err => console.error(err));
 });
 
   </script>
+
+<script>
+  function getBalance() {
+    let balance = localStorage.getItem("accountBalance");
+    if (!balance) {
+      balance = 669013.00; // default starting balance
+      localStorage.setItem("accountBalance", balance);
+    }
+    return parseFloat(balance);
+  }
+
+  function updateBalanceDisplay() {
+    const balanceElements = document.querySelectorAll(".balance-amount");
+    const balance = getBalance();
+    balanceElements.forEach(el => {
+      el.textContent = "USD $" + balance.toLocaleString(undefined, {minimumFractionDigits: 2});
+    });
+  }
+
+  function deductBalance(amount) {
+    let balance = getBalance();
+    balance -= parseFloat(amount);
+    if (balance < 0) balance = 0;
+    localStorage.setItem("accountBalance", balance);
+    updateBalanceDisplay();
+  }
+
+  // Update balance on load
+  document.addEventListener("DOMContentLoaded", updateBalanceDisplay);
+</script>
 
 
   <!-- Chart.js -->

@@ -118,7 +118,7 @@
         <i class="fas fa-door-open"></i>
       </a>
       <a href="./profile.html" class="nav-link text-white-50 fs-5 mt-5" data-tooltip="Profile">
-        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic3">
+        <img src="" alt="" class="rounded-circle" width="30" height="30" alt="Profile" id="profilePic">
       </a>
     </nav>
   </div>
@@ -801,9 +801,9 @@
         <div class="col-lg-3">
           <h6 class="text-uppercase fw-semibold">Contact</h6>
           <ul class="list-unstyled mt-3 text-white-50">
-            <li><i class="bi bi-envelope-fill me-2"></i>support@PinnaTrustBank.com</li>
-            <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+17828213111</li>
-            <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>Calagary, Alberta city, Canada</li>
+            <li><i class="bi bi-envelope-fill me-2"></i>support@pinnatrustbank.com</li>
+            <li class="mt-2"><i class="bi bi-telephone-fill me-2"></i>+1 (202)-984-9810</li>
+            <li class="mt-2"><i class="bi bi-geo-alt-fill me-2"></i>441 Q St NW Washington, DC 20001</li>
           </ul>
         </div>
   
@@ -843,6 +843,15 @@
             return res.json();
         })
         .then(user => {
+            
+            // Profile picture
+            if (user.profilePicture) {
+              const profilePic = document.getElementById("profilePic");
+              const profilePic2 = document.getElementById("profilePic2");
+              if (profilePic) profilePic.src = user.profilePicture;
+              if (profilePic2) profilePic2.src = user.profilePicture;
+            }
+
             if (user) {
             document.getElementById('name1').textContent = `${user.fullName}`;
             document.getElementById('name2').textContent = `${user.fullName}`;
@@ -866,7 +875,7 @@
   newWin.print();
 }
 </script>
-<script>
+<!-- <script>
   // Example: Fetch user data from DB/API
   fetch('/api/user/profile')
     .then(res => res.json())
@@ -874,5 +883,5 @@
       document.getElementById('name1').innerText = user.name;
       document.getElementById('profilePic').src = user.profilePicture; 
     });
-</script>
+</script> -->
 </body>

@@ -16,7 +16,7 @@ button.detail-bg:hover{
   background-color: #4635c423;
 }
 .print-btn{
-  border-radius: 30px !important;
+  /* border-radius: 30px !important; */
   padding: 10px 20px !important;
   border: none;
 }
