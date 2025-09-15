@@ -51,6 +51,11 @@ function authenticateToken(req, res, next) {
   });
 }
 
+app.use(cors({
+  origin: "*", // or restrict to your frontend domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 
 

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/aos.css">
   <style>
     body {
     background: #fff;
@@ -28,7 +29,7 @@
     font-size: 1.5rem;
 }
 .navbar .navbar-brand:hover{
-  color: #212529 !important;
+  color: #fff !important;
 }
 .navbar a:hover{
     color: #4635C4 !important;
@@ -222,24 +223,24 @@ a.btn-light.app-store-btn:hover{
       <!-- Text content -->
       <div class="col-md-6 text-center px-2 pt-4 mb-5">
         <!-- Trust badges -->
-        <div class="trusted-badge mt-5 mb-4 p-1 col-lg-6 col-md-6 mx-auto d-flex align-items-center justify-content-center border rounded-pill">
+        <div class="trusted-badge mt-5 mb-4 p-1 col-lg-6 col-md-6 mx-auto d-flex align-items-center justify-content-center border rounded-pill" data-aos="fade-up">
           <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="User 1" class="hero-user1"/>
           <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="User 2" class="hero-user2"/>
           <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 3" class="hero-user3"/>
           <span class="ms-3 text-muted">Trusted by 21,000+ people</span>
         </div>
-        <h1 class="mb-3">Fastest way to manage<br />payment anytime you want.</h1>
-        <p class="mb-4">Experience smooth, secure, and smart financial operations – directly from your mobile device.</p>
+        <h1 class="mb-3" data-aos="fade-up" data-aos-delay="100">Fastest way to manage<br />payment anytime you want.</h1>
+        <p class="mb-4" data-aos="fade-up" data-aos-delay="200">Experience smooth, secure, and smart financial operations – directly from your mobile device.</p>
         <div class="d-flex gap-3 justify-content-center">
-          <a href="./user-login.html" class="btn btn-dark app-store-btn">Start Banking</a>
-          <a href="./user-login.html" class="btn btn-light app-store-btn">Go to Login</a>
+          <a href="./user-login.html" class="btn btn-dark app-store-btn" data-aos="zoom-in" data-aos-delay="100">Start Banking</a>
+          <a href="./user-login.html" class="btn btn-light app-store-btn" data-aos="zoom-in" data-aos-delay="200">Go to Login</a>
         </div>
       </div>
 
       <!-- Image content -->
       <div class="col-md-12 text-center mt-5 mt-md-0 position-relative" style="background-image: url(./images/WGUnCmbjAOmiB6xJq46r4whcqo.png); background-position: center; background-size: 80%; background-repeat: no-repeat;">
         <!-- <img src="./images/WGUnCmbjAOmiB6xJq46r4whcqo.png" alt="" class="spiral"> -->
-        <img src="./images/phone1.png" alt="App Mockup" class="phone-mockup mt-5" />
+        <img src="./images/phone1.png" alt="App Mockup" class="phone-mockup mt-5" data-aos="fade-up"/>
         <img src="images/938o5GSmp7c9eUmmqmPjOi9Bs.png" alt="" class="bt-shadow2">
         <img src="images/938o5GSmp7c9eUmmqmPjOi9Bs.png" alt="" class="bt-shadow">
       </div>
@@ -305,13 +306,13 @@ a.btn-light.app-store-btn:hover{
 
     <!-- BENEFITS 1 -->
     <section class="row justify-content-between align-items-center my-5" id="benefits"> 
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-5" data-aos="fade-right">
           <p class="detail fw-semibold">BENEFITS</p>
           <h1 class="caption">Save time and money with our powerful tools.</h1>
           <p class="note mt-3 mb-3">PinnaTrustBank gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
           <a href="./user-login.html" class="btn btn-dark app-store-btn">Get Started</a>
         </div>
-        <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+        <div class="col-12 col-lg-6 mt-5 mt-lg-0" data-aos="fade-right" data-aos-delay="100">
           <div class="benefit-img-wrapper py-5 px-4">
             <img src="./images/person1.jpg" alt="" class="w-50 mb-4">
             <img src="./images/atm1.png" alt="" class="atm-card w-50">
@@ -322,13 +323,13 @@ a.btn-light.app-store-btn:hover{
 
     <!-- BENEFITS 2 -->
     <section class="row justify-content-between align-items-center mb-0 mt-5 my-lg-5 pt-5">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-5" data-aos="fade-up">
           <p class="detail fw-semibold">BENEFITS</p>
           <h1 class="caption">More than 18000+ people use PinnaTrustBank.</h1>
           <p class="note mt-3 mb-4">PinnaTrustBank gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
           <a href="./user-login.html" class="btn btn-dark app-store-btn">Get Started</a>
         </div> 
-        <div class="col-12 col-lg-6 mb-lg-5 mb-0 mt-5 mt-lg-0">
+        <div class="col-12 col-lg-6 mb-lg-5 mb-0 mt-5 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
           <div class="benefit-img-wrapper py-5 px-4 row justify-content-center align-items-center">
             <img src="./images/acct1.png" alt="" class="w-75 mb-4">
             <img src="./images/acct2.png" alt="" class="w-100 mb-4">
@@ -340,9 +341,9 @@ a.btn-light.app-store-btn:hover{
   </main>
 
   <section class="my-0 my-lg-5 more-features py-5">
-    <h2 class="text-center my-5 caption">Loaded with more features</h2>
+    <h2 class="text-center my-5 caption" data-aos="fade-up">Loaded with more features</h2>
     <div class="row g-4 container mx-auto mb-5">
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-calendar3 detail me-2 fs-4"></i>
@@ -352,7 +353,7 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right" data-aos-delay="100">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-bar-chart-line detail me-2 fs-4"></i>
@@ -362,7 +363,7 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right" data-aos-delay="200">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-bullseye detail me-2 fs-4"></i>
@@ -372,7 +373,7 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right" data-aos-delay="300">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-wallet2 detail me-2 fs-4"></i>
@@ -382,7 +383,7 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right" data-aos-delay="500">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-bell detail me-2 fs-4"></i>
@@ -392,7 +393,7 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-6">
+      <div class="col-md-12 col-lg-6" data-aos="fade-right" data-aos-delay="600">
         <div class="p-4 rounded-4 bg-white h-100">
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-brightness-high detail me-2 fs-4"></i>
@@ -402,8 +403,8 @@ a.btn-light.app-store-btn:hover{
         </div>
       </div>
       <div class="col-12 text-center mt-5">
-        <p class="text-center col-12 col-lg-7 mx-auto primary-text">PinnaTrustBank gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
-        <a href="./user-login.html" class="btn btn-dark app-store-btn mx-auto w-20 mt-2">Get Started</a>
+        <p class="text-center col-12 col-lg-7 mx-auto primary-text" data-aos="fade-in" data-aos-delay="300">PinnaTrustBank gives you the blocks needed to create a truly professional website for your SaaS is a long established fact that a reader.</p>
+        <a href="./user-login.html" class="btn btn-dark app-store-btn mx-auto w-20 mt-2" data-aos="fade-in" data-aos-delay="300">Get Started</a>
       </div>
     </div>
 
@@ -683,11 +684,11 @@ a.btn-light.app-store-btn:hover{
 
     <!-- Icons and Avatars (Positioned absolutely) -->
     <div class="floating-icons">
-      <img src="https://randomuser.me/api/portraits/men/71.jpg" class="floating-avatar top-left d-none d-lg-block" alt="User Avatar" />
-      <img src="https://randomuser.me/api/portraits/men/81.jpg" class="floating-icon top-center" alt="Icon" />
-      <img src="https://randomuser.me/api/portraits/women/64.jpg" class="floating-avatar top-right" alt="User Avatar" />
-      <img src="https://randomuser.me/api/portraits/women/71.jpg" class="floating-icon bottom-left" alt="Icon" />
-      <img src="https://randomuser.me/api/portraits/men/15.jpg" class="floating-avatar bottom-right d-none d-lg-block" alt="User Avatar" />
+      <img src="https://randomuser.me/api/portraits/men/71.jpg" class="floating-avatar top-left d-none d-lg-block" alt="User Avatar" data-aos="fade-in" data-aos-delay="50"/>
+      <img src="https://randomuser.me/api/portraits/men/81.jpg" class="floating-icon top-center" alt="Icon" data-aos="fade-in" data-aos-delay="100"/>
+      <img src="https://randomuser.me/api/portraits/women/64.jpg" class="floating-avatar top-right" alt="User Avatar" data-aos="fade-in" data-aos-delay="150"/>
+      <img src="https://randomuser.me/api/portraits/women/71.jpg" class="floating-icon bottom-left" alt="Icon" data-aos="fade-in" data-aos-delay="200"/>
+      <img src="https://randomuser.me/api/portraits/men/15.jpg" class="floating-avatar bottom-right d-none d-lg-block" alt="User Avatar" data-aos="fade-in" data-aos-delay="250"/>
     </div>
   </section>
 
@@ -839,6 +840,14 @@ features.forEach((item, index) => {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script src="./js/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      once: true,
+      });
+  </script>
 
 </body>
 </html>

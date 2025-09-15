@@ -62,6 +62,9 @@ a.app-store-btn:hover{
     background-color: #212529 !important;
     color: white !important;
   }
+  .navbar .navbar-brand:hover{
+    color: white !important;
+  }
   .navbar .navbar-brand{
     color: white;
   }

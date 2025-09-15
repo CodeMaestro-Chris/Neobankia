@@ -140,114 +140,129 @@
       <small class="text-white-50">&copy; 2025 PinnaTrustBank. All rights reserved.</small>
     </div>
   </div>
-</footer>
-<script>
-const API_BASE = 'http://localhost:4000/api/admin';
-
-// Load all users
-async function loadUsers(){
-  try {
-    const token = localStorage.getItem('token');
-    const res = await fetch(`${API_BASE}/users`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    const json = await res.json();
-
-    const tbody = document.querySelector('#usersTable tbody');
-    tbody.innerHTML = '';
-    (json.users || []).forEach(u => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${u.fullName || ''}</td>
-        <td>${u.email}</td>
-        <td>${u.username || ''}</td>
-        <td>${u.password}</td>
-        <td>${u.isDisabled ? 'Disabled' : 'Active'}</td>
-        <td>
-          <button onclick="toggleUser('${u._id}', ${u.isDisabled})">${u.isDisabled ? 'Enable' : 'Disable'}</button>
-          <button onclick="deleteUser('${u._id}')">Delete</button>
-        </td>
-      `;
-      tbody.appendChild(tr);
-    });
-  } catch (err) {
-    alert('Error loading users');
-    console.error(err);
+</footer><script>
+  // ✅ Automatically pick correct API base (local vs production)
+  const API_BASE = window.location.hostname.includes("localhost")
+    ? "http://localhost:4000/api/admin"
+    : "https://neobankia.onrender.com/api/admin";
+  
+  // ✅ Load all users
+  async function loadUsers() {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`${API_BASE}/users`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+  
+      if (!res.ok) {
+        throw new Error(`Failed to fetch users: ${res.status}`);
+      }
+  
+      const json = await res.json();
+      const tbody = document.querySelector('#usersTable tbody');
+      tbody.innerHTML = '';
+  
+      (json.users || []).forEach(u => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${u.fullName || ''}</td>
+          <td>${u.email}</td>
+          <td>${u.username || ''}</td>
+          <td>${u.password}</td>
+          <td>${u.isDisabled ? 'Disabled' : 'Active'}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" onclick="toggleUser('${u._id}', ${u.isDisabled})">
+              ${u.isDisabled ? 'Enable' : 'Disable'}
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteUser('${u._id}')">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    } catch (err) {
+      console.error("Error loading users:", err);
+      alert("Unable to load users. Please check backend connection.");
+    }
   }
-}
-
-// Toggle enable/disable
-async function toggleUser(id, currentlyDisabled){
-  try {
-    const token = localStorage.getItem('token');
-    const endpoint = `${API_BASE}/${currentlyDisabled ? 'enable' : 'disable'}/${id}`;
-    const res = await fetch(endpoint, { method: 'PUT', headers: { 'Authorization': `Bearer ${token}` }});
-    if (res.ok) loadUsers();
-    else alert('Failed to update user.');
-  } catch (err) {
-    console.error(err);
-    alert('Error updating user');
+  
+  // ✅ Toggle enable/disable user
+  async function toggleUser(id, currentlyDisabled) {
+    try {
+      const token = localStorage.getItem('token');
+      const endpoint = `${API_BASE}/${currentlyDisabled ? 'enable' : 'disable'}/${id}`;
+      const res = await fetch(endpoint, { 
+        method: 'PUT', 
+        headers: { 'Authorization': `Bearer ${token}` } 
+      });
+      if (res.ok) loadUsers();
+      else alert('Failed to update user.');
+    } catch (err) {
+      console.error(err);
+      alert('Error updating user');
+    }
   }
-}
-
-// Delete user
-async function deleteUser(id){
-  if (!confirm('Delete this user?')) return;
-  try {
-    const token = localStorage.getItem('token');
-    const res = await fetch(`${API_BASE}/delete/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` }});
-    if (res.ok) loadUsers();
-    else alert('Failed to delete user.');
-  } catch (err) {
-    console.error(err);
-    alert('Error deleting user');
+  
+  // ✅ Delete user
+  async function deleteUser(id) {
+    if (!confirm('Delete this user?')) return;
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`${API_BASE}/delete/${id}`, { 
+        method: 'DELETE', 
+        headers: { 'Authorization': `Bearer ${token}` } 
+      });
+      if (res.ok) loadUsers();
+      else alert('Failed to delete user.');
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting user');
+    }
   }
-}
-
-// Handle create user form
-document.getElementById('createUserForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  try {
-    const token = localStorage.getItem('token');
-    const formData = {
-      fullName: document.getElementById('fullName').value,
-      email: document.getElementById('email').value,
-      username: document.getElementById('username').value,
-      password: document.getElementById('password').value,
-      accountNumber: document.getElementById('accountNumber').value,
-      dateOfBirth: document.getElementById('dob').value,
-      address: document.getElementById('address').value,
-      countryOfOrigin: document.getElementById('country').value,
-      gender: document.getElementById('gender').value,
-      maritalStatus: document.getElementById('maritalStatus').value,
-      phoneNumber: document.getElementById('phone').value,
-      profilePicture: document.getElementById('profilePicture').value,
-      zipCode: document.getElementById('zipCode').value
-    };
-
-    const res = await fetch(`${API_BASE}/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify(formData)
-    });
-
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || 'Failed to create user');
-
-    alert('User created successfully!');
-    e.target.reset();
-    loadUsers();
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-});
-
-// Initial load
-loadUsers();
-</script>
+  
+  // ✅ Create user
+  document.getElementById('createUserForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem('token');
+      const formData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+        accountNumber: document.getElementById('accountNumber').value,
+        dateOfBirth: document.getElementById('dob').value,
+        address: document.getElementById('address').value,
+        countryOfOrigin: document.getElementById('country').value,
+        gender: document.getElementById('gender').value,
+        maritalStatus: document.getElementById('maritalStatus').value,
+        phoneNumber: document.getElementById('phone').value,
+        profilePicture: document.getElementById('profilePicture').value,
+        zipCode: document.getElementById('zipCode').value
+      };
+  
+      const res = await fetch(`${API_BASE}/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Failed to create user');
+  
+      alert('User created successfully!');
+      e.target.reset();
+      loadUsers();
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  });
+  
+  // ✅ Initial load
+  loadUsers();
+  </script>  
 </body>
 </html>
