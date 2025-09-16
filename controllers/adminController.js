@@ -51,17 +51,20 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+// controllers/admin.js
 const disableUser = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ message: 'User not found' });
+
     user.isDisabled = true;
     await user.save();
-    return res.json({ message: 'User disabled', user: { id: user._id, isDisabled: user.isDisabled } });
+
+    res.json({ message: 'User disabled', user });
   } catch (err) {
     console.error('disableUser error', err);
-    return res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
@@ -70,14 +73,17 @@ const enableUser = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ message: 'User not found' });
+
     user.isDisabled = false;
     await user.save();
-    return res.json({ message: 'User enabled', user: { id: user._id, isDisabled: user.isDisabled } });
+
+    res.json({ message: 'User enabled', user });
   } catch (err) {
     console.error('enableUser error', err);
-    return res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 const deleteUser = async (req, res) => {
   try {

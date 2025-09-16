@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const { authMiddleware, isAdmin } = require('../middleware/authMiddleware');
+const { disableUser, enableUser } = require('../controllers/adminController');
 const bcrypt = require('bcryptjs');
 
 // CREATE USER (Admin only)
@@ -72,16 +73,8 @@ router.get('/users', async (req, res) => {
 });
 
 // DISABLE USER
-router.put('/disable/:id', async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { isDisabled: true });
-  res.json({ message: 'User disabled' });
-});
-
-// ENABLE USER
-router.put('/enable/:id', async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { isDisabled: false });
-  res.json({ message: 'User enabled' });
-});
+router.put('/disable/:id', disableUser);
+router.put('/enable/:id', enableUser);
 
 // DELETE USER
 router.delete('/delete/:id', async (req, res) => {

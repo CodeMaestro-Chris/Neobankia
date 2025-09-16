@@ -57,6 +57,32 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(404).json({ message: 'User not found' });
+
+    // ⛔ Block disabled users
+    if (user.isDisabled)
+      return res.status(403).json({ message: 'Your account has been disabled. Contact support.' });
+
+    // ✅ Check password directly (since you're not using bcrypt)
+    if (user.password !== password)
+      return res.status(400).json({ message: 'Invalid credentials' });
+
+    // Generate token (JWT or whatever you use)
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '10d' });
+
+    res.json({ token, user });
+  } catch (err) {
+    console.error('login error', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 
 
 // optional: an authenticated endpoint for frontend to test token
