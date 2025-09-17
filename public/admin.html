@@ -36,7 +36,6 @@
   </style>
 </head>
 <body>
-  <main class="container-fluid">
   <h1 class="fw-semibold">PinnaTrustBank Dashboard</h1>
 
   <h3 class="detail">Create A User</h3>
@@ -63,7 +62,7 @@
         <option>Other</option>
       </select>
       <input id="phone" class="col-md-5 col-12" name="phoneNumber" placeholder="Phone Number" />
-      <input id="profilePicture" class="col-md-5 bg-white" name="profilePicture"  placeholder="Profile Picture: Paste url link"/>
+      <input id="profilePicture" class="col-md-5 bg-white" name="profilePicture" />
       <input id="zipCode" class="col-md-5 col-12" name="zipCode" placeholder="Zip Code" />
 
       <button type="submit" class="detail-bg col-lg-2">Create User</button>
@@ -73,23 +72,22 @@
   <h3 class="mt-5">Existing Users</h3>
   <button onclick="loadUsers()" class="detail-bg">Refresh Users</button>
   <div class="table-responsive">
-    <table id="usersTable" class="table">
-      <thead>
-        <tr class="table-dark">
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Username</th>
-          <th>Password</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</main>
+  <table id="usersTable" class="table">
+    <thead>
+      <tr class="table-dark">
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 <!-- FOOTER  -->
-<footer class="bg-dark text-white pt-5 pb-2" style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
+<footer class="bg-dark text-white  pt-5 pb-2"style="background-image: url(./images/world-dotted-map.png); background-position: center; background-size: 60%; background-repeat: no-repeat;">
   <div class="container">
     <div class="row gy-4 justify-content-between py-5">
 
@@ -145,9 +143,7 @@
       <small class="text-white-50">&copy; 2025 PinnaTrustBank. All rights reserved.</small>
     </div>
   </div>
-</footer>
-</body>
-<script>
+</footer><script>
   // ✅ Automatically pick correct API base (local vs production)
   const API_BASE = window.location.hostname.includes("localhost")
     ? "http://localhost:4000/api/admin"
@@ -178,7 +174,9 @@
           <td>${u.password}</td>
           <td>${u.isDisabled ? 'Disabled' : 'Active'}</td>
           <td>
-            
+            <button class="btn btn-sm btn-warning" onclick="toggleUser('${u._id}', ${u.isDisabled})">
+              ${u.isDisabled ? 'Enable' : 'Disable'}
+            </button>
             <button class="btn btn-sm btn-danger" onclick="deleteUser('${u._id}')">Delete</button>
           </td>
         `;
@@ -190,29 +188,22 @@
     }
   }
   
-//   // ✅ Toggle enable/disable user
-//   async function toggleUser(id, currentlyDisabled) {
-//   try {
-//     const token = localStorage.getItem('token');
-//     const endpoint = `${API_BASE}/${currentlyDisabled ? 'enable' : 'disable'}/${id}`;
-    
-//     const res = await fetch(endpoint, {
-//       method: 'PUT',
-//       headers: { 'Authorization': `Bearer ${token}` }
-//     });
-
-//     if (!res.ok) {
-//       const data = await res.json();
-//       throw new Error(data.message || 'Failed to update user');
-//     }
-
-//     await loadUsers(); // reload table from DB after change
-//   } catch (err) {
-//     console.error('toggleUser error:', err);
-//     alert(err.message);
-//   }
-// }
-
+  // ✅ Toggle enable/disable user
+  async function toggleUser(id, currentlyDisabled) {
+    try {
+      const token = localStorage.getItem('token');
+      const endpoint = `${API_BASE}/${currentlyDisabled ? 'enable' : 'disable'}/${id}`;
+      const res = await fetch(endpoint, { 
+        method: 'PUT', 
+        headers: { 'Authorization': `Bearer ${token}` } 
+      });
+      if (res.ok) loadUsers();
+      else alert('Failed to update user.');
+    } catch (err) {
+      console.error(err);
+      alert('Error updating user');
+    }
+  }
   
   // ✅ Delete user
   async function deleteUser(id) {
@@ -276,8 +267,5 @@
   // ✅ Initial load
   loadUsers();
   </script>  
-  <!-- <button class="btn btn-sm btn-warning" onclick="toggleUser('${u._id}', ${u.isDisabled})">
-    ${u.isDisabled ? 'Enable' : 'Disable'}
-  </button> -->
 </body>
 </html>

@@ -55,34 +55,42 @@ const getAllUsers = async (req, res) => {
 const disableUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.findById(id);
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      { isDisabled: true },
+      { new: true } // return updated doc
+    );
+
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    user.isDisabled = true;
-    await user.save();
-
-    res.json({ message: 'User disabled', user });
+    res.json({ message: 'User disabled', user: { id: user._id, isDisabled: user.isDisabled } });
   } catch (err) {
     console.error('disableUser error', err);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
+
 const enableUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.findById(id);
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      { isDisabled: false },
+      { new: true }
+    );
+
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    user.isDisabled = false;
-    await user.save();
-
-    res.json({ message: 'User enabled', user });
+    res.json({ message: 'User enabled', user: { id: user._id, isDisabled: user.isDisabled } });
   } catch (err) {
     console.error('enableUser error', err);
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 
 const deleteUser = async (req, res) => {
